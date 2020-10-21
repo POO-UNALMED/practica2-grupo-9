@@ -12,8 +12,25 @@ public abstract class Producto implements Serializable{
 	private String categoria;
 	private String tipo;
 	
-	public abstract float ganancia();
-	public abstract float inversion();
+	public Producto(int codigo,String nombre,int inventario,float precio,float inversion,
+			String categoria,String tipo) {
+		this.setCodigo(codigo);
+		this.setNombre(nombre);
+		this.setInventario(inventario);
+		this.setPrecio(precio);
+		this.setInversion(inversion);
+		this.setGananciaNeta(precio - inversion);
+		this.setCategoria(categoria);
+		this.setTipo(tipo);
+	}
+	
+	public float ganancia() {
+		return this.gananciaNeta * this.inventario;
+	}
+	public float inversion() {
+		return this.inversion * this.inventario;
+	}
+	public abstract String toString();
 	
 	public int getCodigo() {
 		return codigo;
