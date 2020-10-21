@@ -1,9 +1,10 @@
 package gestorAplicacion.finanzas;
 
 import java.time.LocalDate;
+import java.io.Serializable;
 import java.util.*;
 
-public class Factura {
+public class Factura implements Serializable{
 	private static int codigo;
 	private LocalDate fecha;
 	private float descuento;
@@ -12,7 +13,7 @@ public class Factura {
 	//private Cliente cliente;
 	//private List<Producto> productos = new ArrayList<Producto> ();
 	//private List<Int> cantidades = new ArrayList<Int> ();
-	private static List<Factura> DBRecibos = new ArrayList<Factura> ();
+	public static List<Factura> facturas = new ArrayList<Factura> ();
 	
 	
 	static {
@@ -25,11 +26,11 @@ public class Factura {
 	
 	public void finalizarCompra() {
 		fecha = LocalDate.now();
-		DBRecibos.add(this);
+		facturas.add(this);
 	}
 	
 	public String toString() {
-		return null;
+		return "codigo: " + codigo + "facturas: " + facturas.size();
 		}
 	
 	

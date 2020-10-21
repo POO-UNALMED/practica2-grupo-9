@@ -1,11 +1,13 @@
 package gestorAplicacion.productos;
 import java.util.*;
 
+import gestorAplicacion.finanzas.Factura;
+
 public class Juguete extends Producto implements Instructivo {
 	private String material;
 	private Date fechaSalida;
 	private int garantia;
-	private static ArrayList<Juguete> productosJuguetes;
+	public static ArrayList<Juguete> productosJuguetes = new ArrayList<Juguete> ();
 	
 	public Juguete(int codigo,String nombre,int inventario,float precio,
 			float inversion,String categoria,

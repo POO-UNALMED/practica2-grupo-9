@@ -1,10 +1,12 @@
 package gestorAplicacion.productos;
 import java.util.*;
 
+import gestorAplicacion.finanzas.Factura;
+
 public class Abarrote extends Producto implements Instructivo {
 	private Boolean perecedero;
 	private String unidad;
-	private static ArrayList<Abarrote> productosAbarrotes;
+	public static ArrayList<Abarrote> productosAbarrotes = new ArrayList<Abarrote> ();
 	
 	public Abarrote(int codigo,String nombre,int inventario,float precio,float inversion,
 			String categoria,String tipo,Boolean perecedero,String unidad) {

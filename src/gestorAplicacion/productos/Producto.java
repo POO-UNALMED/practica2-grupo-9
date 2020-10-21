@@ -1,6 +1,8 @@
 package gestorAplicacion.productos;
 
-public abstract class Producto {
+import java.io.Serializable;
+
+public abstract class Producto implements Serializable{
 	private int codigo;
 	private String nombre;
 	private int inventario;

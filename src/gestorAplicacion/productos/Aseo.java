@@ -2,12 +2,13 @@ package gestorAplicacion.productos;
 
 import java.util.*;
 
+import gestorAplicacion.finanzas.Factura;
+
 public class Aseo extends Producto implements Instructivo{
 	private String unidad;
-	private static ArrayList<Aseo> productosAseo;
+	public static ArrayList<Aseo> productosAseo = new ArrayList<Aseo> ();
 	
-	public Aseo(int codigo,String nombre,int inventario,float precio,float inversion,
-			String categoria,String tipo,String unidad) {
+	public Aseo(int codigo,String nombre,int inventario,float precio,float inversion, String categoria,String tipo,String unidad) {
 		this.setCodigo(codigo);
 		this.setNombre(nombre);
 		this.setInventario(inventario);
