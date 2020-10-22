@@ -1,18 +1,18 @@
 package gestorAplicacion.productos;
+import java.io.*;
 import java.util.*;
 
-import gestorAplicacion.finanzas.Factura;
 
-public class Abarrote extends Producto implements Instructivo {
+public class Abarrote extends Producto implements Instructivo, Serializable {
 	private Boolean perecedero;
 	private String unidad;
-	public static ArrayList<Abarrote> productosAbarrotes = new ArrayList<Abarrote> ();
+	public static List<Abarrote> productosAbarrotes = new ArrayList<Abarrote> ();
 	
 	public Abarrote(int codigo,String nombre,int inventario,float precio,float inversion,
 			String categoria,String tipo,Boolean perecedero,String unidad) {
 		super(codigo, nombre, inventario, precio, inversion, categoria, tipo);
-		this.setPerecedero(perecedero);
-		this.setUnidad(unidad);
+		this.perecedero = perecedero;
+		this.unidad = unidad;
 		productosAbarrotes.add(this);
 	}
 	

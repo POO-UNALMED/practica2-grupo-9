@@ -1,21 +1,21 @@
 package gestorAplicacion.productos;
+import java.io.*;
 import java.util.*;
 
-import gestorAplicacion.finanzas.Factura;
 
-public class Juguete extends Producto implements Instructivo {
+public class Juguete extends Producto implements Instructivo, Serializable {
 	private String material;
 	private Date fechaSalida;
 	private int garantia;
-	public static ArrayList<Juguete> productosJuguetes = new ArrayList<Juguete> ();
+	public static List<Juguete> productosJuguetes = new ArrayList<Juguete> ();
 	
 	public Juguete(int codigo,String nombre,int inventario,float precio,
 			float inversion,String categoria,
 			String tipo,String material,Date fechaSalida, int garantia) {
 		super(codigo, nombre, inventario, precio, inversion, categoria, tipo);
-		this.setMaterial(material);
-		this.setFechaSalida(fechaSalida);
-		this.setGarantia(garantia);
+		this.material = material;
+		this.fechaSalida = fechaSalida;
+		this.garantia = garantia;
 		productosJuguetes.add(this);
 	}
 	

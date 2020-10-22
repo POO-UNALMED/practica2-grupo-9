@@ -1,8 +1,8 @@
 package gestorAplicacion.productos;
 
-import java.io.Serializable;
+import java.io.*;
 
-public abstract class Producto implements Serializable{
+public abstract class Producto implements Serializable {
 	private int codigo;
 	private String nombre;
 	private int inventario;
@@ -14,14 +14,14 @@ public abstract class Producto implements Serializable{
 	
 	public Producto(int codigo,String nombre,int inventario,float precio,float inversion,
 			String categoria,String tipo) {
-		this.setCodigo(codigo);
-		this.setNombre(nombre);
-		this.setInventario(inventario);
-		this.setPrecio(precio);
-		this.setInversion(inversion);
-		this.setGananciaNeta(precio - inversion);
-		this.setCategoria(categoria);
-		this.setTipo(tipo);
+		this.codigo = codigo;
+		this.nombre = nombre;
+		this.inventario = inventario;
+		this.precio = precio;
+		this.inversion = inversion;
+		this.gananciaNeta = (precio - inversion);
+		this.categoria = categoria;
+		this.tipo = tipo;
 	}
 	
 	public float ganancia() {

@@ -14,4 +14,8 @@ public class Mensajes {
 		return "1. Primera. \n2. Segunda. \n3. tercera. \nOtro valor para volver.";
 	}
 	
+	public static String selProductos() {
+		return "1. Crear producto de Aseo. \n2. Crear producto de Abarrote. \n3. Crear producto de Juguete. \n4. Ver lista de productos. \nOtro valor para volver.";
+	}
+	
 }

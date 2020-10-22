@@ -15,43 +15,34 @@ public class Writer {
 	public static void Write() {
 
 		try {// Facturas
-			
+
 			outputs = new ObjectOutputStream(
 					new FileOutputStream(PATH.getAbsolutePath() + "\\src\\BaseDatos\\temp\\Factura.txt"));
 			for (int i = 0; i < Factura.facturas.size(); i++) {
 				outputs.writeObject(Factura.facturas.get(i));
 			}
 			outputs.close();
-		} catch (IOException error) {
-			error.printStackTrace();
-		}
 
-		try {// Aseo
-			
+			// Aseo
+
 			outputs = new ObjectOutputStream(
 					new FileOutputStream(PATH.getAbsolutePath() + "\\src\\BaseDatos\\temp\\Aseo.txt"));
 			for (int i = 0; i < Aseo.productosAseo.size(); i++) {
 				outputs.writeObject(Aseo.productosAseo.get(i));
 			}
 			outputs.close();
-		} catch (IOException error) {
-			error.printStackTrace();
-		}
 
-		try {// Abarrotes
-			
+			// Abarrotes
+
 			outputs = new ObjectOutputStream(
 					new FileOutputStream(PATH.getAbsolutePath() + "\\src\\BaseDatos\\temp\\Abarrote.txt"));
 			for (int i = 0; i < Abarrote.productosAbarrotes.size(); i++) {
 				outputs.writeObject(Abarrote.productosAbarrotes.get(i));
 			}
 			outputs.close();
-		} catch (IOException error) {
-			error.printStackTrace();
-		}
 
-		try {// Juguete
-			
+			// Juguete
+
 			outputs = new ObjectOutputStream(
 					new FileOutputStream(PATH.getAbsolutePath() + "\\src\\BaseDatos\\temp\\Juguete.txt"));
 			for (int i = 0; i < Juguete.productosJuguetes.size(); i++) {
