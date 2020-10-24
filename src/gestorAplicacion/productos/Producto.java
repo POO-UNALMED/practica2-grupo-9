@@ -3,16 +3,16 @@ package gestorAplicacion.productos;
 import java.io.*;
 
 public abstract class Producto implements Serializable {
-	private int codigo;
-	private String nombre;
-	private int inventario;
-	private float precio;
-	private float inversion;
-	private float gananciaNeta;
-	private String categoria;
-	private String tipo;
+	protected int codigo;
+	protected String nombre;
+	protected int inventario;
+	protected float precio;
+	protected float inversion;
+	protected float gananciaNeta;
+	protected String categoria;
+	protected String tipo;
 	
-	public Producto(int codigo,String nombre,int inventario,float precio,float inversion,
+	protected Producto(int codigo,String nombre,int inventario,float precio,float inversion,
 			String categoria,String tipo) {
 		this.codigo = codigo;
 		this.nombre = nombre;

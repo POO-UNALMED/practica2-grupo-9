@@ -22,8 +22,13 @@ public class Factura implements Serializable{
 		codigo = 0;
 	}
 	
-	public Factura() {
+	public Factura(List<Producto> productos, List<Integer> cantidades) {
 		++codigo;
+		fecha = new Date();
+		this.productos = productos;
+		this.cantidades = cantidades;
+		facturas.add(this);
+		
 	}
 	
 	public void finalizarCompra() {
@@ -36,42 +41,6 @@ public class Factura implements Serializable{
 		}
 	
 	
-	
-	public boolean agregarProducto(Producto producto, int cantidad) {
-		if (cantidad <= producto.getInventario()) {
-			productos.add(producto);
-			cantidades.add(cantidad);
-			return true;
-		} 
-		else {
-			return false;
-		}
-		
-		
-	}
-	
-	public boolean eliminarProducto(String nombre, int cantidad) {
-		int index = -1;
-		for (int i = 0; i < productos.size(); i++) {
-			if (productos.get(i).getNombre() == nombre) {
-				index = i;
-			}
-		}
-		
-		if (cantidades.get(index) <= cantidad && cantidades.get(index) > 0 && index != -1) {
-			if(cantidades.get(index) < cantidad) {
-				cantidades.set(index, cantidades.get(index) - cantidad);
-			}
-			else {
-				productos.remove(index);
-				cantidades.remove(index);
-			}
-			return true;
-		} else {
-			return false;
-		}
-		
-	}
 	
 	public int cantProductVentDebCred() {
 		return 1;
