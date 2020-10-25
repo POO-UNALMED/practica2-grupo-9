@@ -12,7 +12,7 @@ public class Factura implements Serializable{
 	private float descuento;
 	private double total;
 	private final double IVA = 1.19;
-	//private Cliente cliente;
+	private Cliente cliente;
 	private List<Producto> productos = new ArrayList<Producto> ();
 	private List<Integer> cantidades = new ArrayList<Integer> ();
 	public static List<Factura> facturas = new ArrayList<Factura> ();
