@@ -33,7 +33,7 @@ public class Factura implements Serializable{
 		for(int i = 0; i < productos.size(); i++) {
 			this.productos.add(productos.get(i));
 			this.cantidades.add(cantidades.get(i));
-			actualizarInventario(Aseo.productosAseo, Abarrote.productosAbarrotes, Juguete.productosJuguetes, productos.get(i), cantidades.get(i));
+			actualizarInventario(productos.get(i), cantidades.get(i));
 			
 		}
 		
@@ -43,7 +43,11 @@ public class Factura implements Serializable{
 		
 	}
 	
-	public void actualizarInventario(List<Aseo> productosAseo, List<Abarrote> productosAbarrote, List<Juguete> productosJuguete, Producto producto, int cantidad) {
+	public void actualizarInventario(Producto producto, int cantidad) {
+		List<Aseo> productosAseo = Aseo.productosAseo;
+		List<Abarrote> productosAbarrote = Abarrote.productosAbarrotes;
+		List<Juguete> productosJuguete = Juguete.productosJuguetes;
+		
 		int index = -1;
 		int nuevoInventario = 0;
 		if (productosAseo.indexOf(producto) != -1) {
