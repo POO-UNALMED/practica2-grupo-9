@@ -17,7 +17,7 @@ public class UserInterface {
 		Reader.Read();
 		// Factura f3 = new Factura();
 		// f3.finalizarCompra();
-		Writer.Write();
+		//Writer.Write();
 
 		Scanner scan = new Scanner(System.in);
 
@@ -51,13 +51,13 @@ public class UserInterface {
 				switch (option) {
 				case 1:
 					System.out.println("Opcion 1.");
-					
-					//System.out.println(Factura.facturas.get(1));
-					
-					//for(Factura f: Factura.facturas) {
-					//	System.out.println(f);
-					//}
-					
+
+					// System.out.println(Factura.facturas.get(1));
+
+					// for(Factura f: Factura.facturas) {
+					// System.out.println(f);
+					// }
+
 					System.out.println(Factura.facturas.size());
 
 					break;
@@ -75,99 +75,123 @@ public class UserInterface {
 				}
 
 				break;
+
 			case 2:
 
-				Factura f;
-				int cantidad = -1;
-				int index = 0;
+				boolean menuTienda = false;
+				while (!menuTienda) {
 
-				System.out.println("Menu tienda.");
+					int cantidad = -1;
+					int index = 0;
 
-				System.out.println(
-						"1. Crear. \n2. Agregar producto. \n3. Quitar producto. \n4. Lista de productos. \n5. Pagar. \nPresiona cualquier tecla para salir.");
+					System.out.println("Menu tienda.");
 
-				System.out.print(Mensajes.opcion());
+					System.out.println(Mensajes.selTienda());
 
-				option = scan.nextInt();
+					System.out.print(Mensajes.opcion());
 
-				switch (option) {
-				case 1:
-					
-					break;
-
-				case 2:
-					MenuProducto.mostrarProducto();
-
-					System.out.print("Seleccione un id de producto: ");
 					option = scan.nextInt();
-					System.out.print("Cantidad: ");
-					cantidad = scan.nextInt();
-					
-					MenuTienda.validarProducto(option, index, cantidad, productos, cantidades);
-					
-					break;
 
-				case 3:
-					MenuTienda.mostrarListaProductos(productos, cantidades);
-					
-					System.out.print("ingrese el id del producto: ");
-					idProducto = scan.nextInt();
-					System.out.print("Cantidad a eliminar: ");
-					cantidadProducto = scan.nextInt();
+					switch (option) {
 
-					MenuTienda.eliminarProducto(productos, cantidades, idProducto, cantidadProducto);
-					break;
 
-				case 4:
-					MenuTienda.mostrarListaProductos(productos, cantidades);
-					break;
+					case 1:
 
-				case 5:
-					totalVenta = 0;
-					for(int i = 0; i < productos.size(); i++) {
-						totalVenta += productos.get(i).getPrecio() * cantidades.get(i);
+						MenuProducto.mostrarProducto();
+
+						System.out.print("Seleccione un id de producto: ");
+						option = scan.nextInt();
+						System.out.print("Cantidad: ");
+						cantidad = scan.nextInt();
+
+						MenuTienda.validarProducto(option, cantidad, productos, cantidades);
+
+						break;
+
+					case 2:
+						MenuTienda.mostrarListaProductos(productos, cantidades);
+
+						System.out.print("ingrese el id del producto: ");
+						idProducto = scan.nextInt();
+						System.out.print("Cantidad a eliminar: ");
+						cantidadProducto = scan.nextInt();
+
+						MenuTienda.eliminarProducto(productos, cantidades, idProducto, cantidadProducto);
+						break;
+
+					case 3:
+						MenuTienda.mostrarListaProductos(productos, cantidades);
+						break;
+
+					case 4:
+						totalVenta = 0;
+						for (int i = 0; i < productos.size(); i++) {
+							totalVenta += productos.get(i).getPrecio() * cantidades.get(i);
+						}
+
+						new Factura(productos, cantidades, totalVenta);
+						productos.clear();
+						cantidades.clear();
+						break;
+
+					default:
+						menuTienda = true;
+						break;
+
 					}
-					
-					new Factura(productos, cantidades, totalVenta);
-					productos.clear();
-					cantidades.clear();
-					break;
-
 				}
 
 				break;
+
 			case 3:
 
-				System.out.println("Menu Productos.");
-				System.out.println(Mensajes.selProductos());
-				System.out.println(Mensajes.opcion());
-				option = scan.nextInt();
+				boolean menuProductos = false;
+				while (!menuProductos) {
 
-				switch (option) {
-				case 1:
+					System.out.println("Menu Productos.");
+					System.out.println(Mensajes.selProductos());
+					System.out.print(Mensajes.opcion());
+					option = scan.nextInt();
 
-					MenuProducto.crearProducto(1, scan);
-					break;
+					switch (option) {
+					case 1:
 
-				case 2:
+						MenuProducto.crearProducto(1, scan);
+						break;
 
-					MenuProducto.crearProducto(2, scan);
-					break;
+					case 2:
 
-				case 3:
+						MenuProducto.crearProducto(2, scan);
+						break;
 
-					MenuProducto.crearProducto(3, scan);
-					break;
+					case 3:
 
-				case 4:
+						MenuProducto.crearProducto(3, scan);
+						break;
+					
+					case 4:
+						MenuProducto.mostrarProducto();
+						System.out.println("1. Agregar. \n2. Eliminar");
+						option = scan.nextInt();
+						System.out.print("Ingrese el id del producto: ");
+						idProducto = scan.nextInt();
+						System.out.print("Cantidad de invenatiro a agregar: ");
+						cantidadProducto = scan.nextInt();
+						
+						MenuProducto.actualizarInventario(option, idProducto, cantidadProducto);
+						
+						break;
 
-					MenuProducto.mostrarProducto();
-					break;
+					case 5:
 
-				default:
-					break;
+						MenuProducto.mostrarProducto();
+						break;
+
+					default:
+						menuProductos = true;
+						break;
+					}
 				}
-
 				break;
 
 			case 4:
@@ -183,15 +207,8 @@ public class UserInterface {
 	}
 
 	// Functions
-
 	
 
 	
-
 	
-
-	
-
-	
-
 }

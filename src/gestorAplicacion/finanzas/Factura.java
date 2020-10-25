@@ -4,6 +4,9 @@ import java.time.LocalDate;
 import java.io.Serializable;
 import java.util.*;
 
+import gestorAplicacion.productos.Abarrote;
+import gestorAplicacion.productos.Aseo;
+import gestorAplicacion.productos.Juguete;
 import gestorAplicacion.productos.Producto;
 
 public class Factura implements Serializable{
@@ -30,14 +33,37 @@ public class Factura implements Serializable{
 		for(int i = 0; i < productos.size(); i++) {
 			this.productos.add(productos.get(i));
 			this.cantidades.add(cantidades.get(i));
+			actualizarInventario(Aseo.productosAseo, Abarrote.productosAbarrotes, Juguete.productosJuguetes, productos.get(i), cantidades.get(i));
+			
 		}
 		
-		//this.productos.addAll(productos);
-		//this.cantidades.addAll(cantidades);
+		
+		
 		facturas.add(this);
 		
 	}
 	
+	public void actualizarInventario(List<Aseo> productosAseo, List<Abarrote> productosAbarrote, List<Juguete> productosJuguete, Producto producto, int cantidad) {
+		int index = -1;
+		int nuevoInventario = 0;
+		if (productosAseo.indexOf(producto) != -1) {
+			index = productosAseo.indexOf(producto);
+			nuevoInventario = productosAseo.get(index).getInventario() - cantidad;
+			productosAseo.get(index).setInventario(nuevoInventario);
+		}
+		else if (productosAbarrote.indexOf(producto) != -1) {
+			index = productosAbarrote.indexOf(producto);
+			nuevoInventario = productosAbarrote.get(index).getInventario() - cantidad;
+			productosAbarrote.get(index).setInventario(nuevoInventario);
+		}
+		else if (productosJuguete.indexOf(producto) != -1) {
+			index = productosJuguete.indexOf(producto);
+			nuevoInventario = productosJuguete.get(index).getInventario() - cantidad;
+			productosJuguete.get(index).setInventario(nuevoInventario);
+		}
+		
+		
+	}
 	
 	public String toString() {
 		return "codigo: " + codigo + "Articulos: " + productos.get(2).getNombre();

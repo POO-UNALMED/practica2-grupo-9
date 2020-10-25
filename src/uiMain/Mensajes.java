@@ -18,8 +18,12 @@ public class Mensajes {
 		return "1. Primera. \n2. Segunda. \n3. tercera. \nOtro valor para volver.";
 	}
 	
+	public static String selTienda() {
+		return "1. Agregar producto. \n2. Quitar producto. \n3. Lista de productos. \n4. Pagar. \nPresiona cualquier tecla para salir.";
+	}
+	
 	public static String selProductos() {
-		return "1. Crear producto de Aseo. \n2. Crear producto de Abarrote. \n3. Crear producto de Juguete. \n4. Ver lista de productos. \nOtro valor para volver.";
+		return "1. Crear producto de Aseo. \n2. Crear producto de Abarrote. \n3. Crear producto de Juguete. \n4. Actualizar inventario.  \n5. Ver lista de productos. \nOtro valor para volver.";
 	}
 	
 }

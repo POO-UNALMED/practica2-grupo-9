@@ -37,10 +37,11 @@ public class MenuTienda {
 				System.out.println("No se pudo agregar el producto");
 			}
 		} else {
+			
 			index = productos.indexOf(producto);
 			aumento = cantidades.get(index) + cantidad;
-
-			if (cantidad <= producto.getInventario()) {
+			
+			if (cantidad <= producto.getInventario() && aumento <= producto.getInventario()) {
 				cantidades.set(index, aumento);
 				System.out.println("Agregado exitosamente");
 			} else {
@@ -49,24 +50,25 @@ public class MenuTienda {
 
 		}
 	}
-	
-	public static void validarProducto(int idProducto, int index, int cantidad, List<Producto> productos, List<Integer> cantidades) {
-		if (idProducto <= Aseo.productosAseo.size()) {
+
+	public static void validarProducto(int idProducto, int cantidad, List<Producto> productos, List<Integer> cantidades) {
+		
+		int index = -1; 
+		
+		if (MenuProducto.validarListas(1, idProducto)) {
 			
-			index = idProducto;
-			agregarProducto(Aseo.productosAseo.get(--index), cantidad, productos, cantidades);
+			index = idProducto - 1;
+			agregarProducto(Aseo.productosAseo.get(index), cantidad, productos, cantidades);
 			
-		} else if (idProducto <= (Aseo.productosAseo.size() + Abarrote.productosAbarrotes.size()) && 
-				(idProducto - Aseo.productosAseo.size()) <= Abarrote.productosAbarrotes.size()) {
+		} else if (MenuProducto.validarListas(2, idProducto)) {
 
-			index = idProducto - Aseo.productosAseo.size();
-			agregarProducto(Abarrote.productosAbarrotes.get(--index), cantidad, productos, cantidades);
+			index = idProducto - Aseo.productosAseo.size() - 1;
+			agregarProducto(Abarrote.productosAbarrotes.get(index), cantidad, productos, cantidades);
 
-		} else if (idProducto <= (Aseo.productosAseo.size() + Abarrote.productosAbarrotes.size() + Juguete.productosJuguetes.size()) && 
-				  (idProducto - (Aseo.productosAseo.size() + Juguete.productosJuguetes.size())) <= Juguete.productosJuguetes.size()) {
+		} else if (MenuProducto.validarListas(3, idProducto)) {
 
-			index = idProducto - (Aseo.productosAseo.size() + Juguete.productosJuguetes.size());
-			agregarProducto(Juguete.productosJuguetes.get(--index), cantidad, productos, cantidades);
+			index = idProducto - (Aseo.productosAseo.size() + Juguete.productosJuguetes.size()) - 1;
+			agregarProducto(Juguete.productosJuguetes.get(index), cantidad, productos, cantidades);
 			
 		} else {
 			System.out.println("No existe el numero de producto.");
