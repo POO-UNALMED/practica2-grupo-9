@@ -11,29 +11,33 @@ public class Cliente {
 	
 	
 	public void aumentarAfiliacion() {
-		Cliente.nivel_afiliacion+=1;
+		setNivel_afiliacion(getNivel_afiliacion()+1);
 	}
 	
 	public void disminuirAfiliacion() {
-		Cliente.nivel_afiliacion-=1;
+		setNivel_afiliacion(getNivel_afiliacion()-1);
 	}
 	
 	public void descuentoAfiliacion() {
-		if (Cliente.getNivel_afiliacion()==1) {
-			//hacer descuento
+		if (getNivel_afiliacion()==1) {
+			((Factura) facturas).setDescuento(10);
 		}
-		else if (Cliente.getNivel_afiliacion()==2) {}
-			//hacer descuento
+		else if (Cliente.getNivel_afiliacion()==2) {
+			((Factura) facturas).setDescuento(20);
+		}
+			
 	}
 	
 	public void descuentoEdad(int ed) {
 		if (ed >= 60) {
-			
+			((Factura) facturas).setDescuento(20);
 		}
 	}
 	
 	public void descuentoMetodoPago(String metodo) {
-		
+		if (metodo == "efectivo") {
+			((Factura) facturas).setDescuento(20);
+		}
 	}
 	
 	public List<Factura> getFacturas() {
