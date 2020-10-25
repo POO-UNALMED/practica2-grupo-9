@@ -11,7 +11,7 @@ public class Factura implements Serializable{
 	private Date fecha;
 	private float descuento;
 	private double total;
-	private final double IVA = 0.19;
+	private final double IVA = 1.19;
 	//private Cliente cliente;
 	private List<Producto> productos = new ArrayList<Producto> ();
 	private List<Integer> cantidades = new ArrayList<Integer> ();
@@ -22,22 +22,25 @@ public class Factura implements Serializable{
 		codigo = 0;
 	}
 	
-	public Factura(List<Producto> productos, List<Integer> cantidades) {
+	public Factura(List<Producto> productos, List<Integer> cantidades, float total) {
 		++codigo;
 		fecha = new Date();
-		this.productos = productos;
-		this.cantidades = cantidades;
+		this.total = total * IVA;
+		
+		for(int i = 0; i < productos.size(); i++) {
+			this.productos.add(productos.get(i));
+			this.cantidades.add(cantidades.get(i));
+		}
+		
+		//this.productos.addAll(productos);
+		//this.cantidades.addAll(cantidades);
 		facturas.add(this);
 		
 	}
 	
-	public void finalizarCompra() {
-		fecha = new Date();
-		facturas.add(this);
-	}
 	
 	public String toString() {
-		return "codigo: " + codigo + "facturas: " + facturas.size();
+		return "codigo: " + codigo + "Articulos: " + productos.get(2).getNombre();
 		}
 	
 	

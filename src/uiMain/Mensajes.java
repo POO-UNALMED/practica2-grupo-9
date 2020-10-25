@@ -6,6 +6,10 @@ public class Mensajes {
 		return "Bienvenido. Por favor ingrese su nombre: ";
 	}
 	
+	public static String opcion() {
+		return "Opcion: ";
+	}
+	
 	public static String selInicio() {
 		return "1. Menu usuario. \n2. Menu tienda. \n3. Productos. \n4. salir.";
 	}

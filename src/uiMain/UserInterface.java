@@ -25,6 +25,7 @@ public class UserInterface {
 		int option;
 		int cantidadProducto;
 		int idProducto;
+		float totalVenta;
 		boolean exit = false;
 
 		List<Producto> productos = new ArrayList<Producto>();
@@ -36,20 +37,27 @@ public class UserInterface {
 		while (!exit) {
 
 			System.out.println(Mensajes.selInicio());
-			System.out.print("Opcion: ");
+			System.out.print(Mensajes.opcion());
 			option = scan.nextInt();
 
 			switch (option) {
 			case 1:
 				System.out.println(Mensajes.selUsuario());
 
-				System.out.print("Opcion: ");
+				System.out.print(Mensajes.opcion());
 
 				option = scan.nextInt();
 
 				switch (option) {
 				case 1:
 					System.out.println("Opcion 1.");
+					
+					//System.out.println(Factura.facturas.get(1));
+					
+					//for(Factura f: Factura.facturas) {
+					//	System.out.println(f);
+					//}
+					
 					System.out.println(Factura.facturas.size());
 
 					break;
@@ -78,7 +86,7 @@ public class UserInterface {
 				System.out.println(
 						"1. Crear. \n2. Agregar producto. \n3. Quitar producto. \n4. Lista de productos. \n5. Pagar. \nPresiona cualquier tecla para salir.");
 
-				System.out.print("Opcion: ");
+				System.out.print(Mensajes.opcion());
 
 				option = scan.nextInt();
 
@@ -115,7 +123,12 @@ public class UserInterface {
 					break;
 
 				case 5:
-					new Factura(productos, cantidades);
+					totalVenta = 0;
+					for(int i = 0; i < productos.size(); i++) {
+						totalVenta += productos.get(i).getPrecio() * cantidades.get(i);
+					}
+					
+					new Factura(productos, cantidades, totalVenta);
 					productos.clear();
 					cantidades.clear();
 					break;
@@ -127,7 +140,7 @@ public class UserInterface {
 
 				System.out.println("Menu Productos.");
 				System.out.println(Mensajes.selProductos());
-				System.out.println("Opcion: ");
+				System.out.println(Mensajes.opcion());
 				option = scan.nextInt();
 
 				switch (option) {
