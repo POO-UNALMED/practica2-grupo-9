@@ -1,14 +1,21 @@
 package gestorAplicacion.finanzas;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cliente {
+public class Cliente implements Serializable {
 	private int edad;
 	private static int nivel_afiliacion;
 	private String metodo_pago;
 	private List<Factura> facturas = new ArrayList<Factura> ();
 	
+	
+	public Cliente(int edad, String metodo_pago) {
+		this.edad = edad;
+		this.nivel_afiliacion = 0;
+		this.metodo_pago = metodo_pago;
+	}
 	
 	public void aumentarAfiliacion() {
 		setNivel_afiliacion(getNivel_afiliacion()+1);
@@ -26,6 +33,10 @@ public class Cliente {
 			((Factura) facturas).setDescuento(20);
 		}
 			
+	}
+	
+	public void agregarFactura(Factura factura) {
+		facturas.add(factura);
 	}
 	
 	public void descuentoEdad(int ed) {

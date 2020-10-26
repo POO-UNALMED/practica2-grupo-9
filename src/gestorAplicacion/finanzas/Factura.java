@@ -25,10 +25,11 @@ public class Factura implements Serializable{
 		codigo = 0;
 	}
 	
-	public Factura(List<Producto> productos, List<Integer> cantidades, float total) {
+	public Factura(List<Producto> productos, List<Integer> cantidades, float total, Cliente cliente) {
 		++codigo;
 		fecha = new Date();
 		this.total = total * IVA;
+		this.cliente = cliente;
 		
 		for(int i = 0; i < productos.size(); i++) {
 			this.productos.add(productos.get(i));
@@ -38,8 +39,8 @@ public class Factura implements Serializable{
 		}
 		
 		
-		
 		facturas.add(this);
+		cliente.agregarFactura(this);
 		
 	}
 	
@@ -113,5 +114,13 @@ public class Factura implements Serializable{
 
 	public double getIVA() {
 		return IVA;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 }

@@ -11,11 +11,11 @@ public class Mensajes {
 	}
 	
 	public static String selInicio() {
-		return "1. Menu usuario. \n2. Menu tienda. \n3. Productos. \n4. salir.";
+		return "1. Menu usuario. \n2. Menu tienda. \n3. Productos. \n4. Ver lista de facturas. \n5. salir.";
 	}
 	
 	public static String selUsuario() {
-		return "1. Primera. \n2. Segunda. \n3. tercera. \nOtro valor para volver.";
+		return "1. Ver nivel afiliacion. \n2. Modificar Afiliacion \n3. Ver tu lista de facturas. \nOtro valor para volver.";
 	}
 	
 	public static String selTienda() {
