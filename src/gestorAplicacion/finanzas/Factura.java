@@ -80,14 +80,14 @@ public class Factura implements Serializable{
 	public int cantProductVentDebCred() {
 		int cant = 0;
 		for(Factura f : facturas) {
-			if (f.getCliente().getMetodo_pago() == "debito" || f.getCliente().getMetodo_pago() == "debito") {
+			if (f.getCliente().getMetodo_pago() == "Debito" || f.getCliente().getMetodo_pago() == "debito") {
 				cant += f.cantidades.stream().reduce(Integer::sum).get();
 			}
 		}
 		return cant;
 	}
 	
-	public String masVendido() {
+	public static String masVendido() {
 		HashMap<Producto, Integer> prodxcant = new HashMap<Producto, Integer> ();
 		for(Factura f : facturas) {
 			for(int i = 0; i < f.productos.size(); i++) {

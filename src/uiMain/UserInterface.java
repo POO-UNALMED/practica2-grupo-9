@@ -16,13 +16,8 @@ public class UserInterface {
 	public static void main(String[] args) {
 
 		Reader.Read();
-		// Factura f3 = new Factura();
-		// f3.finalizarCompra();
-		//Writer.Write();
-		
 		
 		Scanner scan = new Scanner(System.in);
-		
 		
 		
 		int metodoPago;
@@ -38,57 +33,52 @@ public class UserInterface {
 		List<Producto> productos = new ArrayList<Producto>();
 		List<Integer> cantidades = new ArrayList<Integer>();
 		
-		System.out.print("Ingrese su edad: ");
+		System.out.print(Mensajes.edad());
 		edad = scan.nextInt();
-		System.out.print("Ingrese su metodo de pago (1. Debito / 2. Credito): ");
+		System.out.print(Mensajes.debCred());
 		metodoPago = scan.nextInt();
 		
 		if(metodoPago == 1) { debCred = "Debito"; }
 		else if(metodoPago == 2) { debCred = "Credito"; }
 		
 		cliente = new Cliente(edad, debCred);
-		// System.out.print(Mensajes.bienvenida());
-		// name = scan.next();
+		
+		System.out.print(Mensajes.bienvenida());
+		System.out.println(Mensajes.seccionar());
 
 		while (!exit) {
 
 			System.out.println(Mensajes.selInicio());
+			System.out.println(Mensajes.seccionar());
 			System.out.print(Mensajes.opcion());
+			
 			option = scan.nextInt();
-
+			
+			
 			switch (option) {
 			case 1:
 				
 				boolean menuUsuario = false;
 				while (!menuUsuario) {
-				
+					
+				System.out.println(Mensajes.seccionar());
 				System.out.println(Mensajes.selUsuario());
-
+				System.out.println(Mensajes.seccionar());
 				System.out.print(Mensajes.opcion());
 
 				option = scan.nextInt();
-//1. Ver nivel afiliacion. \n2. Modificar Afiliacion \n3. Ver tu lista de facturas. \nOtro valor para volver.
+
 				switch (option) {
 				case 1:
 					
-					
 					System.out.println(cliente.getNivel_afiliacion());
-					
-					//System.out.println("Opcion 1.");
-
-					// System.out.println(Factura.facturas.get(1));
-
-					// for(Factura f: Factura.facturas) {
-					// System.out.println(f);
-					// }
-
-					//System.out.println(Factura.facturas.size());
 
 					break;
 
 				case 2:
 					
-					System.out.println("1. Aumentar afiliacion. \n2. Disminuir afiliacion.");
+					System.out.println(Mensajes.afiliacion());
+					System.out.print(Mensajes.opcion());
 					option = scan.nextInt();
 					
 					if (option == 1) { cliente.aumentarAfiliacion(); }
@@ -117,10 +107,11 @@ public class UserInterface {
 					int cantidad = -1;
 					int index = 0;
 
+					System.out.println(Mensajes.seccionar());
 					System.out.println("Menu tienda.");
 
 					System.out.println(Mensajes.selTienda());
-
+					System.out.println(Mensajes.seccionar());
 					System.out.print(Mensajes.opcion());
 
 					option = scan.nextInt();
@@ -180,9 +171,11 @@ public class UserInterface {
 
 				boolean menuProductos = false;
 				while (!menuProductos) {
-
+					
+					System.out.println(Mensajes.seccionar());
 					System.out.println("Menu Productos.");
 					System.out.println(Mensajes.selProductos());
+					System.out.println(Mensajes.seccionar());
 					System.out.print(Mensajes.opcion());
 					option = scan.nextInt();
 
@@ -228,13 +221,24 @@ public class UserInterface {
 				break;
 				
 			case 4:
+
 				System.out.println(Factura.facturas.size()); //metodo toString
+				System.out.println(Mensajes.seccionar());
 				break;
 				
 			case 5:
 				System.out.println("Adios.");
 				Writer.Write();
 				exit = true;
+				break;
+				
+			case 6:
+				System.out.println("El producto mas vendido es: " + Factura.masVendido());
+				System.out.println(Mensajes.seccionar());
+				break;
+				
+			case 7:
+				//System.out.println(Factura.cantProductVentDebCred());
 				break;
 			default:
 				System.out.println("Opcion incorrecta. ");
