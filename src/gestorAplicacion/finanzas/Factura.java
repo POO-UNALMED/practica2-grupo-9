@@ -28,7 +28,8 @@ public class Factura implements Serializable{
 	public Factura(List<Producto> productos, List<Integer> cantidades, float total, Cliente cliente) {
 		++codigo;
 		fecha = new Date();
-		this.total = total * IVA;
+		this.total = total * (1 - (descuento/100)) * IVA;
+
 		this.cliente = cliente;
 		
 		for(int i = 0; i < productos.size(); i++) {
@@ -77,19 +78,59 @@ public class Factura implements Serializable{
 	
 	
 	public int cantProductVentDebCred() {
-		return 1;
+		int cant = 0;
+		for(Factura f : facturas) {
+			if (f.getCliente().getMetodo_pago() == "debito" || f.getCliente().getMetodo_pago() == "debito") {
+				cant += f.cantidades.stream().reduce(Integer::sum).get();
+			}
 		}
-	
-	public String masVendido() {
-		return null;
-		}
-	
-	public int ventasTotales() {
-		return 1;
+		return cant;
 	}
 	
-	public int gananciaNeta() {
-		return 1;
+	public String masVendido() {
+		HashMap<Producto, Integer> prodxcant = new HashMap<Producto, Integer> ();
+		for(Factura f : facturas) {
+			for(int i = 0; i < f.productos.size(); i++) {
+				Producto key = f.productos.get(i);
+				int value = f.cantidades.get(i);
+				if (prodxcant.containsKey(key)) {
+					int oldValue = prodxcant.get(key);
+					prodxcant.replace(key,oldValue+value);
+				}
+				else prodxcant.put(key, value);
+			}
+		}
+		int temp = 0;
+		String max = "No hay facturas aún";
+		for (Producto p : prodxcant.keySet()) {
+			if (prodxcant.get(p) > temp) {
+				max = p.getNombre();
+				temp = prodxcant.get(p);
+			}
+		}
+		return max;
+	}
+	
+	public int ventasTotales() {
+		int sum = 0;
+		for(Factura f : facturas) {
+			sum += f.total;
+		}
+		return sum;
+	}
+	
+	public float gananciaNeta() {
+		int ganancia = 0;
+		for(Factura f : facturas) {
+			int parcial = 0;
+			for(int i = 0; i < f.productos.size(); i++) {
+				double inv = f.productos.get(i).getInversion() * IVA;
+				double inversion = inv * f.cantidades.get(i);
+				parcial += inversion;
+			}
+			ganancia += f.total - parcial;
+		}
+		return ganancia;
 	}
 
 	public static int getCodigo() {
