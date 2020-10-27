@@ -23,8 +23,7 @@ public class Abarrote extends Producto implements Instructivo, Serializable {
 	}
 	@Override
 	public String instrucciones() {
-		// TODO Auto-generated method stub
-		return null;
+		return "\nInstrucciones para el uso de abarrotes:  \n-Mantener en un lugar fresco y seco. \n-Consumir lo más pronto posible luego de abrir el empaque.";
 	}
 	
 	public Boolean getPerecedero() {

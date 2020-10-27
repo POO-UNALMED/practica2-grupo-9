@@ -22,8 +22,8 @@ public class Aseo extends Producto implements Instructivo, Serializable{
 	}
 	@Override
 	public String instrucciones() {
-		// TODO Auto-generated method stub
-		return null;
+		return "\nInstrucciones para el uso de implementos de aseo:  \n-Mantener en un lugar fresco y seco."
+				+ " \n-Mantener fuera del alcance de los niños. \n-En caso de contacto de detergente con los ojos, lavar con abundante agua, si la molestia persiste, favor comunicarse con su médico.";
 	}
 
 	public String getUnidad() {

@@ -26,8 +26,8 @@ public class Juguete extends Producto implements Instructivo, Serializable {
 	}
 	@Override
 	public String instrucciones() {
-		// TODO Auto-generated method stub
-		return null;
+		return "\nInstrucciones para el uso de juguetes  \n-Apto para personas de 3 a 98 años. \n-Las baterías no vienen incluidas con el producto. "
+				+ "\n-Tratar bien a los juguetes para evitar una escena de Toy Story.";
 	}
 
 	public String getMaterial() {
