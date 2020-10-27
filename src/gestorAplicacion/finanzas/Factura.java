@@ -77,7 +77,7 @@ public class Factura implements Serializable{
 	
 	
 	
-	public int cantProductVentDebCred() {
+	public static int cantProductVentDebCred() {
 		int cant = 0;
 		for(Factura f : facturas) {
 			if (f.getCliente().getMetodo_pago() == "Debito" || f.getCliente().getMetodo_pago() == "debito") {
@@ -111,7 +111,7 @@ public class Factura implements Serializable{
 		return max;
 	}
 	
-	public int ventasTotales() {
+	public static int ventasTotales() {
 		int sum = 0;
 		for(Factura f : facturas) {
 			sum += f.total;
@@ -119,12 +119,12 @@ public class Factura implements Serializable{
 		return sum;
 	}
 	
-	public float gananciaNeta() {
+	public static float gananciaNeta() {
 		int ganancia = 0;
 		for(Factura f : facturas) {
 			int parcial = 0;
 			for(int i = 0; i < f.productos.size(); i++) {
-				double inv = f.productos.get(i).getInversion() * IVA;
+				double inv = f.productos.get(i).getInversion() * f.getIVA();
 				double inversion = inv * f.cantidades.get(i);
 				parcial += inversion;
 			}
