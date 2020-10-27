@@ -2,6 +2,8 @@ package uiMain;
 
 import java.util.List;
 
+import gestorAplicacion.finanzas.Cliente;
+import gestorAplicacion.finanzas.Factura;
 import gestorAplicacion.productos.Abarrote;
 import gestorAplicacion.productos.Aseo;
 import gestorAplicacion.productos.Juguete;
@@ -12,14 +14,15 @@ public class MenuTienda {
 	public static void mostrarListaProductos(List<Producto> productos, List<Integer> cantidades) {
 		int index;
 		if (!productos.isEmpty()) {
-			System.out.println("id --- Codigo --- Nombre --- Cantidad --- Precio Unidad");
+			System.out.println(Mensajes.carritoCompras);
+			System.out.println(Mensajes.cabeceras);
 			for (int i = 0; i < productos.size(); i++) {
 				index = i + 1;
-				System.out.println(index + "  |  "+ productos.get(i).getCodigo() + "  |  " + productos.get(i).getNombre() + "  |  "
+				System.out.println("| " + index + "  |  "+ productos.get(i).getCodigo() + "  |  " + productos.get(i).getNombre() + "  |  "
 						+ cantidades.get(i) + "  |  " + productos.get(i).getPrecio());
 			}
 		} else {
-			System.out.println("No hay productos agregados.");
+			System.out.println(Mensajes.sinProductos);
 		}
 
 	}
@@ -32,9 +35,9 @@ public class MenuTienda {
 			if (cantidad <= producto.getInventario()) {
 				productos.add(producto);
 				cantidades.add(cantidad);
-				System.out.println("Agregado exitosamente");
+				System.out.println(Mensajes.exitoAgregar);
 			} else {
-				System.out.println("No se pudo agregar el producto");
+				System.out.println(Mensajes.productoNoAgregado);
 			}
 		} else {
 			
@@ -43,9 +46,9 @@ public class MenuTienda {
 			
 			if (cantidad <= producto.getInventario() && aumento <= producto.getInventario()) {
 				cantidades.set(index, aumento);
-				System.out.println("Agregado exitosamente");
+				System.out.println(Mensajes.exitoAgregar);
 			} else {
-				System.out.println("No se pudo agregar el producto");
+				System.out.println(Mensajes.productoNoAgregado);
 			}
 
 		}
@@ -71,7 +74,7 @@ public class MenuTienda {
 			agregarProducto(Juguete.productosJuguetes.get(index), cantidad, productos, cantidades);
 			
 		} else {
-			System.out.println("No existe el numero de producto.");
+			System.out.println(Mensajes.noExisteID);
 		}
 	}
 	
@@ -88,11 +91,23 @@ public class MenuTienda {
 				producto.remove(index);
 				cantidades.remove(index);
 			}
-			System.out.println("Se ha borrado exitosamente");
+			System.out.println(Mensajes.borradoExitoso);
 		} else {
-			System.out.println("Ingresa correctamente los datos.");
+			System.out.println(Mensajes.datosIncorrectos);
 		}
 
+	}
+	
+	public static void pagar(List<Producto> productos, List<Integer> cantidades, Cliente cliente) {
+		int totalVenta = 0;
+		for (int i = 0; i < productos.size(); i++) {
+				totalVenta += productos.get(i).getPrecio() * cantidades.get(i);
+			}
+		new Factura(productos, cantidades, totalVenta, cliente);
+		productos.clear();
+		cantidades.clear();
+		
+		System.out.println(Mensajes.compraExitosa);
 	}
 
 	
