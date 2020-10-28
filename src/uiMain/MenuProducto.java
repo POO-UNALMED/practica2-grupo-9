@@ -17,9 +17,7 @@ import gestorAplicacion.productos.Juguete;
 
 public class MenuProducto {
 
-	/*
-	 * mostrarProducto()
-	 * 
+	/* 
 	 * Muestra en un formato definido y estilizado los elementos por medio del toString de cada subclase
 	 * de productos y en el siguiente orden, Productos de Aseo, Productos de Abarrotes y Productos de Juguete 
 	 * 
@@ -33,7 +31,7 @@ public class MenuProducto {
 
 		int index = 0;
 
-		if (!Aseo.productosAseo.isEmpty()) { // Cambiar cuando esten implementados los toString
+		if (!Aseo.productosAseo.isEmpty()) {
 			for (Aseo aseo : Aseo.productosAseo) {
 				index++;
 				System.out.println("| " + index + "  |  " + aseo.getCodigo() + "  |  " + aseo.getNombre() + "  |  "
@@ -73,7 +71,7 @@ public class MenuProducto {
 	 * - validador es un entero de 1 a 3 con la unica funcionalidad de verificar en alguna de las listas de las subclases de productos 
 	 * (1 = productosAseo, 2 = productosAbarrote, 3 = productosJuguetes).
 	 * 
-	 * - idProducto es un enetero que representa el id del producto seleccionado por el usuario
+	 * - idProducto es un entero que representa el id del producto seleccionado por el usuario
 	 * 
 	 * Salidas: Retorna un booleano dependiendo si el idProducto se encuentra en la lista especifica seleccionada por el validador
 	 *
@@ -106,7 +104,7 @@ public class MenuProducto {
 	 * - validador es un entero de 1 a 3 con la unica funcionalidad de verificar en alguna de las listas de las subclases de productos 
 	 * (1 = productosAseo, 2 = productosAbarrote, 3 = productosJuguetes).
 	 * 
-	 * - idProducto es un enetero que representa el id del producto seleccionado por el usuario
+	 * - idProducto es un entero que representa el id del producto seleccionado por el usuario
 	 * 
 	 * - cantidad es un entero que representa la cantidad de inventario a aumentar o disminuir
 	 * 
@@ -117,7 +115,7 @@ public class MenuProducto {
 	/*
 	 * IMPORTANTE: El codigo basa los id de productos de manera dinamica, reservando los primeros id a los productos de Aseo y siguiendo ese orden con Abarrote y Juguete
 	 * Como un producto de abarrote puede tener un id y este puede ser acaparado por un producto de aseo en algun momento de la ejecucion
-	 * Cualquier tipo de exception que tenga que ver con edichos ids esta controlada
+	 * Cualquier tipo de exception que tenga que ver con dichos ids esta controlada
 	 * 
 	 * */
 	

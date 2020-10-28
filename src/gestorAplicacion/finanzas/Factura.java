@@ -83,7 +83,7 @@ public class Factura implements Serializable {
 		return cant;
 	}
 
-	public static void masVendido() {
+	public static Producto masVendido() {
 		HashMap<Producto, Integer> prodxcant = new HashMap<Producto, Integer>();
 		for (Factura f : facturas) {
 			for (int i = 0; i < f.productos.size(); i++) {
@@ -106,11 +106,7 @@ public class Factura implements Serializable {
 				
 			}
 		}
-		if (produc != null) {
-			System.out.println(produc);
-		} else {
-			System.out.println(max);
-		}
+		return produc;
 		
 		//return max;
 	}

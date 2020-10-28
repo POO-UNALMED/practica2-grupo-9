@@ -18,7 +18,7 @@ public class Writer {
 	//este es el metodo principal de esta clase donde podremos modificar los archivos .txt de nuestra base de datos
 	public static void Write() {
 
-		try {// Facturas
+		try {
 
 			outputs = new ObjectOutputStream(
 					new FileOutputStream(PATH.getAbsolutePath() + "\\src\\BaseDatos\\temp\\Abarrote.txt"));

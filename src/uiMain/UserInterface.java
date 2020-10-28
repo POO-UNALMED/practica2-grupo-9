@@ -1,3 +1,12 @@
+/*
+ * Es la encargada de ejecutar la interfaz de usuario y de interactuar con las funcionalidades de proyecta
+ * tambien de instanciar las clases 
+ * 
+ * se utilizo dos arreglos dianmicos con la finalidad de almacenar de manera temporal los productos y cantidades definidas por los clientes
+ * y estos se pasan como parametros para crear las facturas al momento de pagar
+ * 
+ * El funcionamiento de todos los metodos usados en esta clase estan explicados en sus respectivas clases
+ * */
 package uiMain;
 
 import java.util.*;
@@ -15,7 +24,7 @@ public class UserInterface {
 
 	public static void main(String[] args) {
 
-		Reader.Read();
+		Reader.Read(); //llamada al metodo Read de la clase Reader encargada de cargar los objetos de los .txt a sus respectivas listas dinamicas en cada clase
 
 		Scanner scan = new Scanner(System.in);
 
@@ -29,9 +38,11 @@ public class UserInterface {
 		boolean exit = false;
 		Cliente cliente;
 
+		//Arreglos temporales utilizados con el fin explicado en la cabecera
 		List<Producto> productos = new ArrayList<Producto>();
 		List<Integer> cantidades = new ArrayList<Integer>();
-
+		
+		// seccion encargada de crear un cliente
 		System.out.print(Mensajes.edad);
 		edad = scan.nextInt();
 		System.out.print(Mensajes.debCred);
@@ -43,7 +54,9 @@ public class UserInterface {
 		System.out.println(Mensajes.seccionar);
 
 		while (!exit) {
-
+			
+			//Seccion encargada del menu principal
+			
 			System.out.println(Mensajes.selInicio);
 			System.out.println(Mensajes.seccionar);
 			System.out.print(Mensajes.opcion);
@@ -52,7 +65,8 @@ public class UserInterface {
 
 			switch (option) {
 			case 1:
-
+				
+				//Seccion encargada del menu de usuario, el cual permite ver nivel de afiliacion, aumentar/disminuir este y ver las facturas asociadas a dicho usuario
 				boolean menuUsuario = false;
 				while (!menuUsuario) {
 
@@ -94,7 +108,9 @@ public class UserInterface {
 				break;
 
 			case 2:
-
+				
+				//Seccion encargada del menu de tienda, el cual permite agregar/quitar un producto al carrito, ver la lista de productos en el carrito y pagar
+				
 				boolean menuTienda = false;
 				while (!menuTienda) {
 
@@ -166,6 +182,8 @@ public class UserInterface {
 
 			case 3:
 
+				//Seccion encargada del menu de productos. el cual permite crear productos de tipo Aseo/Abarrote/Juguete, actualizar el inventario de estos y
+				//ver la lista de todos los productos disponibles en la tienda
 				boolean menuProductos = false;
 				while (!menuProductos) {
 
@@ -198,12 +216,12 @@ public class UserInterface {
 						MenuProducto.mostrarProducto();
 						System.out.println(Mensajes.seccionar);
 
-						System.out.println("1. Agregar. / 2. Eliminar");
+						System.out.println(Mensajes.agregarQuitar);
 						System.out.print(Mensajes.opcion);
 						option = scan.nextInt();
 						System.out.print(Mensajes.selID);
 						idProducto = scan.nextInt();
-						System.out.print("Cantidad de inventario a Agregar/Quitar: ");
+						System.out.print(Mensajes.agrQuitarInventario);
 						cantidadProducto = scan.nextInt();
 
 						MenuProducto.actualizarInventario(option, idProducto, cantidadProducto);
@@ -223,6 +241,9 @@ public class UserInterface {
 				break;
 
 			case 4:
+				
+				//Seccion encargada de mostrar la lista de todas las facturas de la tienda
+				
 				System.out.println(Mensajes.seccionar);
 				
 				for(Factura f: Factura.facturas) {
@@ -233,51 +254,63 @@ public class UserInterface {
 				break;
 
 			case 5:
+				
+				//Seccion encargada de mostrar el producto mas vendido en toda la tienda
+				
 				System.out.println(Mensajes.seccionar);
-				Factura.masVendido();
+				if(Factura.masVendido() != null) {
+					System.out.println(Factura.masVendido());
+				}
+				else {
+					System.out.println(Mensajes.sinFacturas);
+				}
 				System.out.println(Mensajes.seccionar);
 
 				break;
 
 			case 6:
+				
+				//Seccion encargada de ver la cantidad total de productos vendidos con tarjeta de debito/credito
+				
 				System.out.println(Mensajes.seccionar);
-				System.out.println("La cantidad de productos vendidos con tarjetas de debito o credito es de: " + Factura.cantProductVentDebCred());
+				System.out.println(Mensajes.ventasDebCred + Factura.cantProductVentDebCred());
 				System.out.println(Mensajes.seccionar);
 				break;
 
 			case 7:
+				
+				//Seccion encargada de mostrar la cantidad (monetaria) de ventas totales en toda la tienda
+				
 				System.out.println(Mensajes.seccionar);
-				System.out.println("Las ventas totales son de: " + Factura.ventasTotales());
+				System.out.println(Mensajes.venTotales + Factura.ventasTotales());
 				System.out.println(Mensajes.seccionar);
 				break;
 
 			case 8:
+				
+				//Seccion encargada de mostrar las ganancias netas de la tienda
+				
 				System.out.println(Mensajes.seccionar);
-				System.out.println("La ganacia neta es de: " + Factura.gananciaNeta());
+				System.out.println(Mensajes.ganNeta + Factura.gananciaNeta());
 				System.out.println(Mensajes.seccionar);
 				break;
 			case 9:
+				
+				//Seccion encargada de finalizar el programa
+				
 				System.out.println(Mensajes.seccionar);
-				System.out.println("Adios.");
-				Writer.Write();
+				System.out.println(Mensajes.despedida);
+				Writer.Write();//llamada al metodo Write de la clase Writer encargada de sobreescribir los objetos de los .txt preservando el estado actual del programa
 				exit = true;
 				break;
 			default:
-				System.out.println("Opcion incorrecta. ");
+				//Seccion encargada de notificar al usuario si no se ingreso correctamente un valor numerico definido por el menu
+				System.out.println(Mensajes.opcIncorrecta);
 			}
 		}
 
 	}
 
-	// Functions
 
-	// totalVenta = 0;
-	// for (int i = 0; i < productos.size(); i++) {
-	// totalVenta += productos.get(i).getPrecio() * cantidades.get(i);
-	// }
-
-	// new Factura(productos, cantidades, totalVenta, cliente);
-	// productos.clear();
-	// cantidades.clear();
 
 }

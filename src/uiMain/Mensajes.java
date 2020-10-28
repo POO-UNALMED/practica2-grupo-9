@@ -12,7 +12,7 @@ public class Mensajes {
 	static String seccionar = "==================================================";
 
 	static String opcion = "Opcion: ";
-
+	
 	static String edad = "Ingrese su edad: ";
 
 	static String cantidad = "Cantidad: ";
@@ -68,7 +68,21 @@ public class Mensajes {
 	static String noProductosJuguete = "No hay productos de Juguetes.";
 
 	static String accionNoRealizada = "No se realizo la accion, Por favor revisa los datos de entrada.";
-
+	
+	static String ventasDebCred = "La cantidad de productos vendidos con tarjetas de debito o credito es de: ";
+	
+	static String venTotales = "Las ventas totales son de: ";
+	
+	static String ganNeta = "La ganacia neta es de: ";
+	
+	static String despedida = "Adios.";
+	
+	static String opcIncorrecta = "Opcion incorrecta. "; 
+	
+	static String agregarQuitar = "1. Agregar. / 2. Eliminar";
+	
+	static String agrQuitarInventario = "Cantidad de inventario a Agregar/Quitar: ";
+	
 	static String codigo = "Codigo: ";
 
 	static String nombre = "Nombre: ";
