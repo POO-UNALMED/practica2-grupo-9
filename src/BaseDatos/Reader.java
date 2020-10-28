@@ -1,3 +1,7 @@
+/*
+ * En esta Clase basicamente se leen todos los archivos .txt correspondiente a la base de datos de nuestro programa
+ */
+
 package BaseDatos;
 
 import java.io.*;
@@ -13,6 +17,7 @@ public class Reader {
 	static File PATH = new File("");
 	private static ObjectInputStream inputs;
 
+	//Este es el metodo principal que leera todos los archivos .txt correspondientes a nuestra base de datos
 	public static void Read() {
 		try {
 

@@ -1,3 +1,6 @@
+/*esta clase tiene como finalidad mostrar el menu de la tienda, donde se llaman los metodos respectivos
+ * para cumplir con todas las funcionalidades de este menu.
+ */
 package uiMain;
 
 import java.util.List;
@@ -11,6 +14,7 @@ import gestorAplicacion.productos.Producto;
 
 public class MenuTienda {
 
+	//este metodo mostrara por pantalla todos los productos que hay en existencia en la base de datos
 	public static void mostrarListaProductos(List<Producto> productos, List<Integer> cantidades) {
 		int index;
 		if (!productos.isEmpty()) {
@@ -27,6 +31,7 @@ public class MenuTienda {
 
 	}
 	
+	//con este metodo se pede agregar un nuevo producto a la base de datos
 	public static void agregarProducto(Producto producto, int cantidad, List<Producto> productos, List<Integer> cantidades) {
 		int index;
 		int aumento;
@@ -54,6 +59,7 @@ public class MenuTienda {
 		}
 	}
 
+	//este metodo actualiza los productos existentes y de esta menra no tener productos repetidos
 	public static void validarProducto(int idProducto, int cantidad, List<Producto> productos, List<Integer> cantidades) {
 		
 		int index = -1; 
@@ -78,6 +84,7 @@ public class MenuTienda {
 		}
 	}
 	
+	//este metodo nos sirve para eliminar un producto de la base de datos
 	public static void eliminarProducto(List<Producto> producto, List<Integer> cantidades, int id, int cantidad) {
 		int index = id - 1;
 		int eliminar;
@@ -98,6 +105,7 @@ public class MenuTienda {
 
 	}
 	
+	//con este metodo hacemos la accion de pagar despues de que el cliente ya haya seleccionado los productos que va a llevar
 	public static void pagar(List<Producto> productos, List<Integer> cantidades, Cliente cliente) {
 		int totalVenta = 0;
 		for (int i = 0; i < productos.size(); i++) {

@@ -1,3 +1,7 @@
+/*
+ * en esta Clase podremos modificar los archivos .txt de nuestra base de datos a voluntad
+ */
+
 package BaseDatos;
 
 import java.io.*;
@@ -11,6 +15,7 @@ public class Writer {
 	static File PATH = new File("");
 	static ObjectOutputStream outputs;
 
+	//este es el metodo principal de esta clase donde podremos modificar los archivos .txt de nuestra base de datos
 	public static void Write() {
 
 		try {// Facturas
