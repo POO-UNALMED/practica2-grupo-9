@@ -17,8 +17,7 @@ public class Aseo extends Producto implements Instructivo, Serializable{
 		
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return null;
+		return "El nombre del producto es " + this.nombre + ", su precio unitario es " + this.precio + " y tenemos " + this.inventario + " en existencias.";
 	}
 	@Override
 	public String instrucciones() {

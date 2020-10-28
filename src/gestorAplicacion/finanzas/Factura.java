@@ -67,7 +67,12 @@ public class Factura implements Serializable {
 	}
 
 	public String toString() {
-		return "codigo: " + codigo + " Articulos: " + productos.get(0).getNombre();
+		String impress = "Esta factura se identifica con el codigo: " + codigo + "\nFue expedida en la fecha: " + fecha + 
+				"\nEl cliente tiene un nivel de afiliación de: " + cliente.getNivel_afiliacion() + "\nLos productos adquiridos son: ";
+		for(int i = 0; i <= productos.size(); i ++) {
+			impress = impress + "\n" + productos.get(i).getNombre() + " cantidad " + productos.get(i).getInventario();
+		}
+		return impress;
 	}
 
 	public static int cantProductVentDebCred() {

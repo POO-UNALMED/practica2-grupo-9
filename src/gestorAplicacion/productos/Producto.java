@@ -1,3 +1,4 @@
+//Clase producto contiene los atributos comunes de las clases hijas y provee el constructor base para las mismas.
 package gestorAplicacion.productos;
 
 import java.io.*;
@@ -23,15 +24,17 @@ public abstract class Producto implements Serializable {
 		this.categoria = categoria;
 		this.tipo = tipo;
 	}
-	
+	//Método ganancia retorna la ganancia neta obtenida por las ventas de todos los productos de un objeto.
 	public float ganancia() {
 		return this.gananciaNeta * this.inventario;
 	}
+	//Método inversion retorna el costo total para el negocio de adquirir los productos de un objeto.
 	public float inversion() {
 		return this.inversion * this.inventario;
 	}
+	//Método toString para las clases hijas
 	public abstract String toString();
-	
+	//Getters y setters
 	public int getCodigo() {
 		return codigo;
 	}
