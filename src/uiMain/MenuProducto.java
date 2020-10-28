@@ -1,3 +1,11 @@
+/*
+ * MenuProducto
+ * 
+ * Alberga los metodos del menu productos, encargados de validar datos de las clases
+ * e implementar restricciones sobre los datos ingresados por el usuario y los arreglos definidos.
+ * En esta se utilizan los arreglos dinamicos definidos como estaticos en cada subclase de productos
+ * cada arreglo dinamico(ArrayList) es del tipo de clase a la cual esta asociado(Aseo, Abarrote, Juguete).
+ * */
 package uiMain;
 
 import java.util.Date;
@@ -9,6 +17,16 @@ import gestorAplicacion.productos.Juguete;
 
 public class MenuProducto {
 
+	/*
+	 * mostrarProducto()
+	 * 
+	 * Muestra en un formato definido y estilizado los elementos por medio del toString de cada subclase
+	 * de productos y en el siguiente orden, Productos de Aseo, Productos de Abarrotes y Productos de Juguete 
+	 * 
+	 * Entradas: Ningun Parametro. Utiliza arreglos dinamicos definidos como estaticos de cada subclase
+	 * Salidad: Un listado de los productos definidos hasta el momento.
+	 * */
+	
 	public static void mostrarProducto() {
 		System.out.println(Mensajes.listaDeProductos);
 		System.out.println(Mensajes.cabeceras);
@@ -46,7 +64,21 @@ public class MenuProducto {
 		}
 
 	}
-
+	
+	/*
+	 * Se encarga de validar si el id ingresado por el usuario es acorde con los elementos definidos en cada lista dinamica
+	 * de las subclases de productos
+	 * 
+	 * Entradas: 
+	 * - validador es un entero de 1 a 3 con la unica funcionalidad de verificar en alguna de las listas de las subclases de productos 
+	 * (1 = productosAseo, 2 = productosAbarrote, 3 = productosJuguetes).
+	 * 
+	 * - idProducto es un enetero que representa el id del producto seleccionado por el usuario
+	 * 
+	 * Salidas: Retorna un booleano dependiendo si el idProducto se encuentra en la lista especifica seleccionada por el validador
+	 *
+	 * */
+	
 	public static boolean validarListas(int validador, int idProducto) {
 
 		if (validador == 1 && idProducto <= Aseo.productosAseo.size()) {
@@ -65,7 +97,30 @@ public class MenuProducto {
 			return false;
 		}
 	}
+	
+	/*
+	 * Se encarga de Aumentar o disminuir el inventario de un producto, ademas, valida que al disminuir el inventario
+	 * no sobrepase el 0
+	 * 
+	 * Entradas: 
+	 * - validador es un entero de 1 a 3 con la unica funcionalidad de verificar en alguna de las listas de las subclases de productos 
+	 * (1 = productosAseo, 2 = productosAbarrote, 3 = productosJuguetes).
+	 * 
+	 * - idProducto es un enetero que representa el id del producto seleccionado por el usuario
+	 * 
+	 * - cantidad es un entero que representa la cantidad de inventario a aumentar o disminuir
+	 * 
+	 * Salidas: Modifica el inventario del producto seleccionado o en su defecto le comunica al usuario que los datos ingresados son incorrectos 
+	 * 
+	 * */
 
+	/*
+	 * IMPORTANTE: El codigo basa los id de productos de manera dinamica, reservando los primeros id a los productos de Aseo y siguiendo ese orden con Abarrote y Juguete
+	 * Como un producto de abarrote puede tener un id y este puede ser acaparado por un producto de aseo en algun momento de la ejecucion
+	 * Cualquier tipo de exception que tenga que ver con edichos ids esta controlada
+	 * 
+	 * */
+	
 	public static void actualizarInventario(int opcion, int idProducto, int cantidad) {
 
 		int index = -1;
@@ -121,6 +176,15 @@ public class MenuProducto {
 		}
 	}
 
+	/*
+	 * Crea un producto de tipo Aseo, Abarrote o Juguete y lo almacena en su respectiva lista dinamica
+	 * 
+	 * Entradas: 
+	 * -Opcion: Un entero de 1 a 3 que representa el producto a instanciar (a = Aseo, 2 = Abarrote, 3 = Juguete)
+	 * -Scan es un scanner que recibe los datos ingresados por el usuario
+	 * 
+	 * Salida: Crea el respectivo objeto con los datos ingresador por el usuario y los almacena en sus respectivas listas dinamicas
+	 * */
 	public static void crearProducto(int opcion, Scanner scan) {
 		System.out.println(Mensajes.seccionar);
 		int codigo;

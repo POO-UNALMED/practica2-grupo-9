@@ -1,3 +1,8 @@
+/*
+ * Clase encargada de contener todos mensajes de la aplicacion
+ * Se hizo con la intension de tener un codigo mas organizado y para no sobrecargar la UI
+ * */
+
 package uiMain;
 
 public class Mensajes {

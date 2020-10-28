@@ -224,32 +224,36 @@ public class UserInterface {
 
 			case 4:
 				System.out.println(Mensajes.seccionar);
-				System.out.println(Factura.facturas.size()); // metodo toString
+				
+				for(Factura f: Factura.facturas) {
+					System.out.println(f);
+				}
+				
 				System.out.println(Mensajes.seccionar);
 				break;
 
 			case 5:
 				System.out.println(Mensajes.seccionar);
-				System.out.println("El producto mas vendido es: " + Factura.masVendido());
+				Factura.masVendido();
 				System.out.println(Mensajes.seccionar);
 
 				break;
 
 			case 6:
 				System.out.println(Mensajes.seccionar);
-				System.out.println(Factura.cantProductVentDebCred());
+				System.out.println("La cantidad de productos vendidos con tarjetas de debito o credito es de: " + Factura.cantProductVentDebCred());
 				System.out.println(Mensajes.seccionar);
 				break;
 
 			case 7:
 				System.out.println(Mensajes.seccionar);
-				System.out.println(Factura.ventasTotales());
+				System.out.println("Las ventas totales son de: " + Factura.ventasTotales());
 				System.out.println(Mensajes.seccionar);
 				break;
 
 			case 8:
 				System.out.println(Mensajes.seccionar);
-				System.out.println(Factura.gananciaNeta());
+				System.out.println("La ganacia neta es de: " + Factura.gananciaNeta());
 				System.out.println(Mensajes.seccionar);
 				break;
 			case 9:

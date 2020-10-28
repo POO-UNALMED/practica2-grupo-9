@@ -10,7 +10,7 @@ import gestorAplicacion.productos.Juguete;
 import gestorAplicacion.productos.Producto;
 
 public class Factura implements Serializable {
-	private static int codigo;
+	private int codigo;
 	private Date fecha;
 	private float descuento;
 	private double total;
@@ -20,12 +20,10 @@ public class Factura implements Serializable {
 	private List<Integer> cantidades = new ArrayList<Integer>();
 	public static List<Factura> facturas = new ArrayList<Factura>();
 
-	static {
-		codigo = 0;
-	}
+	
 
 	public Factura(List<Producto> productos, List<Integer> cantidades, float total, Cliente cliente) {
-		++codigo;
+		codigo = facturas.size() + 1;
 		fecha = new Date();
 		this.total = total * (1 - (descuento / 100)) * IVA;
 
@@ -69,8 +67,8 @@ public class Factura implements Serializable {
 	public String toString() {
 		String impress = "Esta factura se identifica con el codigo: " + codigo + "\nFue expedida en la fecha: " + fecha + 
 				"\nEl cliente tiene un nivel de afiliación de: " + cliente.getNivel_afiliacion() + "\nLos productos adquiridos son: ";
-		for(int i = 0; i <= productos.size(); i ++) {
-			impress = impress + "\n" + productos.get(i).getNombre() + " cantidad " + productos.get(i).getInventario();
+		for(int i = 0; i < productos.size(); i ++) {
+			impress = impress + "\n" + productos.get(i).getNombre() + " cantidad " + cantidades.get(i);
 		}
 		return impress;
 	}
@@ -85,7 +83,7 @@ public class Factura implements Serializable {
 		return cant;
 	}
 
-	public static String masVendido() {
+	public static void masVendido() {
 		HashMap<Producto, Integer> prodxcant = new HashMap<Producto, Integer>();
 		for (Factura f : facturas) {
 			for (int i = 0; i < f.productos.size(); i++) {
@@ -100,13 +98,21 @@ public class Factura implements Serializable {
 		}
 		int temp = 0;
 		String max = "No hay facturas aún";
+		Producto produc = null;
 		for (Producto p : prodxcant.keySet()) {
 			if (prodxcant.get(p) > temp) {
-				max = p.getNombre();
+				produc = p;
 				temp = prodxcant.get(p);
+				
 			}
 		}
-		return max;
+		if (produc != null) {
+			System.out.println(produc);
+		} else {
+			System.out.println(max);
+		}
+		
+		//return max;
 	}
 
 	public static int ventasTotales() {
@@ -131,7 +137,7 @@ public class Factura implements Serializable {
 		return ganancia;
 	}
 
-	public static int getCodigo() {
+	public int getCodigo() {
 		return codigo;
 	}
 
