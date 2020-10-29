@@ -1,3 +1,4 @@
+//Clase Factura encargado se encarga de registrar la venta para cada cliente
 package gestorAplicacion.finanzas;
 
 import java.time.LocalDate;
@@ -40,7 +41,7 @@ public class Factura implements Serializable {
 		cliente.agregarFactura(this);
 
 	}
-
+	//Metodo actualizarInventario
 	public void actualizarInventario(Producto producto, int cantidad) {
 		List<Aseo> productosAseo = Aseo.productosAseo;
 		List<Abarrote> productosAbarrote = Abarrote.productosAbarrotes;
@@ -63,7 +64,7 @@ public class Factura implements Serializable {
 		}
 
 	}
-
+	//Metodo toString que retorna una descripcion de la factura y todos los productos asociados a ella
 	public String toString() {
 		String impress = "Esta factura se identifica con el codigo: " + codigo + "\nFue expedida en la fecha: " + fecha + 
 				"\nEl cliente tiene un nivel de afiliación de: " + cliente.getNivel_afiliacion() + "\nLos productos adquiridos son: ";
@@ -72,7 +73,8 @@ public class Factura implements Serializable {
 		}
 		return impress;
 	}
-
+	//Metodo cantProductVentDebCred que devuelve la cantidad de productos que
+	//pagaron con Debito o Credito
 	public static int cantProductVentDebCred() {
 		int cant = 0;
 		for (Factura f : facturas) {
@@ -82,7 +84,7 @@ public class Factura implements Serializable {
 		}
 		return cant;
 	}
-
+	//Metodo masVendido retorna el metodo toString del Producto más vendido.
 	public static Producto masVendido() {
 		HashMap<Producto, Integer> prodxcant = new HashMap<Producto, Integer>();
 		for (Factura f : facturas) {
@@ -110,7 +112,7 @@ public class Factura implements Serializable {
 		
 		//return max;
 	}
-
+	//Metodo ventasTotales devuelve la sumatoria del total de todas las ventas hechas.
 	public static int ventasTotales() {
 		int sum = 0;
 		for (Factura f : facturas) {
@@ -118,7 +120,8 @@ public class Factura implements Serializable {
 		}
 		return sum;
 	}
-
+	//Metodo gananciaNeta que se encarga de recorrer todas las fácturas generadas 
+	//y devolver la sumatoria de toda la ganancia (precio de venta - inversion) hasta el momento 
 	public static float gananciaNeta() {
 		int ganancia = 0;
 		for (Factura f : facturas) {
@@ -132,7 +135,8 @@ public class Factura implements Serializable {
 		}
 		return ganancia;
 	}
-
+	
+	//Setter y Getter
 	public int getCodigo() {
 		return codigo;
 	}

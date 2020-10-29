@@ -13,7 +13,7 @@ import java.util.List;
 
 public class Cliente implements Serializable {
 	private int edad;
-	private static int nivel_afiliacion;
+	private int nivel_afiliacion;
 	private String metodo_pago;
 	private List<Factura> facturas = new ArrayList<Factura>();
 
@@ -41,12 +41,12 @@ public class Cliente implements Serializable {
 	public void descuentoAfiliacion() {
 		if (getNivel_afiliacion() == 1) {
 			((Factura) facturas).setDescuento(10);
-		} else if (Cliente.getNivel_afiliacion() == 2) {
+		} else if (getNivel_afiliacion() == 2) {
 			((Factura) facturas).setDescuento(20);
 		}
 	}
 
-	//metodo que sirve para agregar una factura correspondiente a un cliente
+	//Metodo que sirve para agregar una factura correspondiente a un cliente
 	public void agregarFactura(Factura factura) {
 		facturas.add(factura);
 	}
@@ -85,13 +85,13 @@ public class Cliente implements Serializable {
 	}
 
 	//metodo get del atributo nivel_afiliacion
-	public static int getNivel_afiliacion() {
+	public int getNivel_afiliacion() {
 		return nivel_afiliacion;
 	}
 
 	//metodo set del atributo nivel_afiliacion
 	public void setNivel_afiliacion(int nivel_afiliacion) {
-		Cliente.nivel_afiliacion = nivel_afiliacion;
+		this.nivel_afiliacion = nivel_afiliacion;
 	}
 
 	//metodo get del atributo metodo_pago
