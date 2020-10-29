@@ -1,3 +1,4 @@
+//Clase Juguete hereda atributos de Producto y metodo de Instructivo, y agrupa los productos de tipo Juguete
 package gestorAplicacion.productos;
 import java.io.*;
 import java.util.*;
@@ -19,16 +20,19 @@ public class Juguete extends Producto implements Instructivo, Serializable {
 		productosJuguetes.add(this);
 	}
 	
+	//Metodo toString que sobreescribe el de la clase padre Producto y retorna una descripcion del producto con nombre, precio e inventario
 	@Override
 	public String toString() {
 		return "El nombre del producto es " + this.nombre + ", su precio unitario es " + this.precio + " y tenemos " + this.inventario + " en existencias.";
 	}
+	//Metodo instrucciones que sobreescribe el de la clase padre Instructivo y retorna unas instrucciones a considerar del producto
 	@Override
 	public String instrucciones() {
 		return "\nInstrucciones para el uso de juguetes  \n-Apto para personas de 3 a 98 años. \n-Las baterías no vienen incluidas con el producto. "
 				+ "\n-Tratar bien a los juguetes para evitar una escena de Toy Story.";
 	}
-
+	
+	//Setter y Getter
 	public String getMaterial() {
 		return material;
 	}
