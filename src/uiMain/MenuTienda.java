@@ -59,7 +59,7 @@ public class MenuTienda {
 		}
 	}
 
-	//este metodo actualiza los productos existentes y de esta menra no tener productos repetidos
+	//este metodo actualiza los productos existentes y de esta manera no tener productos repetidos
 	public static void validarProducto(int idProducto, int cantidad, List<Producto> productos, List<Integer> cantidades) {
 		
 		int index = -1; 
@@ -76,7 +76,7 @@ public class MenuTienda {
 
 		} else if (MenuProducto.validarListas(3, idProducto)) {
 
-			index = idProducto - (Aseo.productosAseo.size() + Juguete.productosJuguetes.size()) - 1;
+			index = idProducto - (Aseo.productosAseo.size() + Abarrote.productosAbarrotes.size()) - 1;
 			agregarProducto(Juguete.productosJuguetes.get(index), cantidad, productos, cantidades);
 			
 		} else {

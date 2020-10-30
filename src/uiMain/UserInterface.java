@@ -260,6 +260,15 @@ public class UserInterface {
 				System.out.println(Mensajes.seccionar);
 				if(Factura.masVendido() != null) {
 					System.out.println(Factura.masVendido());
+					if(Factura.masVendido() instanceof Aseo) {
+						System.out.println(((Aseo) Factura.masVendido()).instrucciones());
+					}
+					else if (Factura.masVendido() instanceof Abarrote) {
+						System.out.println(((Abarrote) Factura.masVendido()).instrucciones());
+					}
+					else if(Factura.masVendido() instanceof Juguete) {
+						System.out.println(((Juguete) Factura.masVendido()).instrucciones());
+					}
 				}
 				else {
 					System.out.println(Mensajes.sinFacturas);

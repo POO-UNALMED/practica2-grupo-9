@@ -88,7 +88,7 @@ public class MenuProducto {
 				&& idProducto <= (Aseo.productosAseo.size() + Abarrote.productosAbarrotes.size()
 						+ Juguete.productosJuguetes.size())
 				&& (idProducto
-						- (Aseo.productosAseo.size() + Juguete.productosJuguetes.size())) <= Juguete.productosJuguetes
+						- (Aseo.productosAseo.size() + Abarrote.productosAbarrotes.size())) <= Juguete.productosJuguetes
 								.size()) {
 			return true;
 		} else {

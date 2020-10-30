@@ -26,6 +26,8 @@ public class Factura implements Serializable {
 	public Factura(List<Producto> productos, List<Integer> cantidades, float total, Cliente cliente) {
 		codigo = facturas.size() + 1;
 		fecha = new Date();
+		
+		
 		this.total = total * (1 - (descuento / 100)) * IVA;
 
 		this.cliente = cliente;
@@ -66,8 +68,8 @@ public class Factura implements Serializable {
 	}
 	//Metodo toString que retorna una descripcion de la factura y todos los productos asociados a ella
 	public String toString() {
-		String impress = "Esta factura se identifica con el codigo: " + codigo + "\nFue expedida en la fecha: " + fecha + 
-				"\nEl cliente tiene un nivel de afiliación de: " + cliente.getNivel_afiliacion() + "\nLos productos adquiridos son: ";
+		String impress = "Esta factura se identifica con el codigo: " + codigo + "\nFue expedida en la fecha: " + fecha + "\nFue pagada con: " + cliente.getMetodo_pago() +
+				"\nEl cliente tiene un nivel de afiliación de: " + cliente.getNivel_afiliacion() + "\nTotal pagado: " + total +"\nLos productos adquiridos son: ";
 		for(int i = 0; i < productos.size(); i ++) {
 			impress = impress + "\n" + productos.get(i).getNombre() + " cantidad " + cantidades.get(i);
 		}
@@ -77,11 +79,17 @@ public class Factura implements Serializable {
 	//pagaron con Debito o Credito
 	public static int cantProductVentDebCred() {
 		int cant = 0;
+		
+		
 		for (Factura f : facturas) {
-			if (f.getCliente().getMetodo_pago() == "Debito" || f.getCliente().getMetodo_pago() == "Credito") {
+			
+			if(f.getCliente().getMetodo_pago().compareTo("Debito") == 0 || f.getCliente().getMetodo_pago().compareTo("Credito") == 0) {
+				
 				cant += f.cantidades.stream().reduce(Integer::sum).get();
 			}
+			
 		}
+		
 		return cant;
 	}
 	//Metodo masVendido retorna el metodo toString del Producto más vendido.
