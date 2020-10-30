@@ -156,7 +156,7 @@ public class MenuProducto {
 
 		} else if (validarListas(3, idProducto)) {
 
-			index = idProducto - (Aseo.productosAseo.size() + Juguete.productosJuguetes.size()) - 1;
+			index = idProducto - (Aseo.productosAseo.size() + Abarrote.productosAbarrotes.size()) - 1;
 			if (opcion == 1) {
 				nuevoInventario = Juguete.productosJuguetes.get(index).getInventario() + cantidad;
 			} else if (opcion == 2 && Juguete.productosJuguetes.get(index).getInventario() >= cantidad) {
