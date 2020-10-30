@@ -1,9 +1,7 @@
-/*La clase Cliente sirve para guardar la informacion del usuario que esta en nuetro programa
-  de esta misma clase se podran usar los metodos de descuentos correspondiente a cada usuario
-  dependiendo de su afiliacion, edad o metodo de pago.
+/* La clase Cliente sirve para guardar la informacion del usuario que esta en nuetro programa
+ * de esta misma clase se podran usar los metodos de descuentos correspondiente a cada usuario
+ * dependiendo de su afiliacion, edad o metodo de pago.
 */
-
-
 
 package gestorAplicacion.finanzas;
 
@@ -17,27 +15,38 @@ public class Cliente implements Serializable {
 	private String metodo_pago;
 	private List<Factura> facturas = new ArrayList<Factura>();
 
-	//Este es el constructor que recibe como atributos "edad" y "metodo_pago" 
-	//para modificarlos cuando se requiera la clase
+	/* Este es el constructor que recibe como atributos "edad" y "metodo_pago"
+	 * para modificarlos cuando se requiera la clase
+	*/
 	public Cliente(int edad, String metodo_pago) {
 		this.edad = edad;
 		this.nivel_afiliacion = 0;
 		this.metodo_pago = metodo_pago;
 	}
 
-	//Este metodo aumenta en uno (1) el nivel de afiliacion del cliente con la tienda
+	/* Este metodo aumenta en uno (1) el nivel de afiliacion del cliente con la tienda
+	 * esto lo hace modificando el atributo "nivel_afiliacion" de la clase cliente por medio
+	 * de su metodo "setNivelAfiliacion"
+	 */
 	public void aumentarAfiliacion() {
 		setNivel_afiliacion(getNivel_afiliacion() + 1);
 	}
 
-	//Este metodo disminuye en uno (1) el nivel de afiliacion del cliente con la tienda
+	/* Este metodo disminuye en uno (1) el nivel de afiliacion del cliente con la tienda
+	 * esto lo hace modificando el atributo "nivel_afiliacion" de la clase cliente por medio
+	 * de su metodo "setNivelAfiliacion"
+	 */
 	public void disminuirAfiliacion() {
 		setNivel_afiliacion(getNivel_afiliacion() - 1);
 	}
 
-	//Este metodo hace valido el descuento del cliente dependiedo su nivel de afiliacion
-	//si es nivel 1 tendra un descuento del 10%
-	//y si es nivel 2 tendra un descuento del 20%
+	/* Este metodo hace valido el descuento del cliente dependiedo su nivel de afiliacion
+	 * si es nivel 1 tendra un descuento del 10%
+	 * y si es nivel 2 tendra un descuento del 20%
+	 * 
+	 * para su verificacion se usa un condicional donde se pregunta si el nivel de afiliacion es 1 o 2 
+	 * para acceder asi al descuento de 10% y 20% respectivamente
+	 */
 	public void descuentoAfiliacion() {
 		if (getNivel_afiliacion() == 1) {
 			((Factura) facturas).setDescuento(10);
@@ -46,19 +55,29 @@ public class Cliente implements Serializable {
 		}
 	}
 
-	//Metodo que sirve para agregar una factura correspondiente a un cliente
+	/* Metodo que sirve para agregar una factura correspondiente a un cliente
+	 * 
+	 */
 	public void agregarFactura(Factura factura) {
 		facturas.add(factura);
 	}
 
-	//Este metodo hace valido el descuento del 20% para clientes mayores de 60 años
+	/* Este metodo hace valido el descuento del 20% para clientes mayores de 60 años
+	 * 
+	 * si el cliente cumple con los requisito, el metodo accede a un objeto "facturas" de tipo "Factura"
+	 * y modifica su atributo descuento por medio de su metodo "setDescuento" 
+	 */
 	public void descuentoEdad(int ed) {
 		if (ed >= 60) {
 			((Factura) facturas).setDescuento(20);
 		}
 	}
 
-	//Este metodo hace valido el descuento del 20% para clientes que paguen en efectivo
+	/* Este metodo hace valido el descuento del 20% para clientes que paguen en efectivo
+	 * 
+	 * si el cliente cumple con los requisito, el metodo accede a un objeto "facturas" de tipo "Factura"
+	 * y modifica su atributo descuento por medio de su metodo "setDescuento"
+	 */
 	public void descuentoMetodoPago(String metodo) {
 		if (metodo == "Efectivo") {
 			((Factura) facturas).setDescuento(20);
