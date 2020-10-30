@@ -14,7 +14,10 @@ import gestorAplicacion.productos.Producto;
 
 public class MenuTienda {
 
-	//este metodo mostrara por pantalla todos los productos que hay en existencia en la base de datos
+	//este metodo mostrara por pantalla todos los productos almacenados en el carrito de compras del cliente
+	//Entrada:
+	//-productos es una lista que contiene todos los objetos de las subclases de productos almacenadas en carrito
+	//-cantidades es una lista que contiene las cantidades de cada producto que el cliente selecciono
 	public static void mostrarListaProductos(List<Producto> productos, List<Integer> cantidades) {
 		int index;
 		if (!productos.isEmpty()) {
@@ -31,7 +34,14 @@ public class MenuTienda {
 
 	}
 	
-	//con este metodo se pede agregar un nuevo producto a la base de datos
+	//Encargado de agregar el producto y la cantidad seleccionada por el cliente al carrito de compras
+	//Entradas:
+	//-producto es el objeto de tipo producto seleccionado por el cliente
+	//-cantidad es la cantidad del producto seleccionado
+	//-productos es la lista que simula al carrito de compras y en la cual se almacena la instancia de producto
+	//-cantidades es lista que almacena las cantidades de los productos seleccionados por el cliente
+	//Salidas
+	//almacenar dichos datos en esas listas
 	public static void agregarProducto(Producto producto, int cantidad, List<Producto> productos, List<Integer> cantidades) {
 		int index;
 		int aumento;
@@ -59,7 +69,14 @@ public class MenuTienda {
 		}
 	}
 
-	//este metodo actualiza los productos existentes y de esta manera no tener productos repetidos
+	//Encargado de validar si el producto seleccionado por el usuario existe en la base de datos y almacenando este al carrito si es correcto
+	//Entradas:
+	//-idProducto entero que representa el id del producto seleccionado por el cliente
+	//-cantida entero que representa la cantidad de dicho producto que quiere el cliente
+	//-productos es la lista que simula al carrito de compras y en la cual se almacena la instancia de producto
+	//-cantidades es lista que almacena las cantidades de los productos seleccionados por el cliente
+	//Salida
+	//Llama al metodo agregarProducto o en su defecto envia un mensaje de error al cliente
 	public static void validarProducto(int idProducto, int cantidad, List<Producto> productos, List<Integer> cantidades) {
 		
 		int index = -1; 
@@ -84,7 +101,14 @@ public class MenuTienda {
 		}
 	}
 	
-	//este metodo nos sirve para eliminar un producto de la base de datos
+	//Encargado de eliminar parte del producto o en su totalidad del carrito de compras
+	//Entradas:
+	//-productos es la lista que simula al carrito de compras y en la cual se almacena la instancia de producto
+	//-cantidades es lista que almacena las cantidades de los productos seleccionados por el cliente
+	//-id representa el id del producto dentro del carrito de compras
+	//-cantidad representa la cantidad a eliminar de dicho producto en el carrito de compras
+	//Salida:
+	//Actualiza el carrito de compras con la nueva cantidad o en su defecto elimina dicho producto del carrito
 	public static void eliminarProducto(List<Producto> producto, List<Integer> cantidades, int id, int cantidad) {
 		int index = id - 1;
 		int eliminar;
@@ -106,6 +130,12 @@ public class MenuTienda {
 	}
 	
 	//con este metodo hacemos la accion de pagar despues de que el cliente ya haya seleccionado los productos que va a llevar
+	//Entradas
+	//-productos es la lista que simula al carrito de compras y en la cual se almacena la instancia de producto
+	//-cantidades es lista que almacena las cantidades de los productos seleccionados por el cliente
+	//-cliente representa al cliente al cual va asociado la factura
+	//Salida
+	//Construye con estos datos una nueva factura
 	public static void pagar(List<Producto> productos, List<Integer> cantidades, Cliente cliente) {
 		int totalVenta = 0;
 		for (int i = 0; i < productos.size(); i++) {

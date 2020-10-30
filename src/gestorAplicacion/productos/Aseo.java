@@ -9,6 +9,12 @@ public class Aseo extends Producto implements Instructivo, Serializable{
 	private String unidad;
 	public static List<Aseo> productosAseo = new ArrayList<Aseo> ();
 	
+	
+	public Aseo() {
+		this(1, "NaN", 0, 0, 0, "NaN", "NaN","NaN");
+		
+	}
+	
 	public Aseo(int codigo,String nombre,int inventario,float precio,float inversion, String categoria,String tipo,String unidad) {
 		super(codigo, nombre, inventario, precio, inversion, categoria, tipo);
 		this.unidad = unidad;

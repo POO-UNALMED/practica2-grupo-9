@@ -10,6 +10,10 @@ public class Juguete extends Producto implements Instructivo, Serializable {
 	private int garantia;
 	public static List<Juguete> productosJuguetes = new ArrayList<Juguete> ();
 	
+	public Juguete() {
+		this(1, "NaN", 0, 0, 0, "NaN", "NaN","NaN",new Date(), 0);
+		
+	}
 	
 	public Juguete(int codigo,String nombre,int inventario,float precio,
 			float inversion,String categoria,

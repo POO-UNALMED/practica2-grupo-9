@@ -1,4 +1,5 @@
-//Clase Factura encargado se encarga de registrar la venta para cada cliente
+//Modulo gestorAplicacion finanzas cuyas funcionalidades van destinadas al manejo de facturas de clientes e inventarios de productos
+//Clase Factura que se encarga de registrar la venta para cada cliente y actualizar los inventarios con cada compra
 package gestorAplicacion.finanzas;
 
 import java.time.LocalDate;
@@ -44,6 +45,15 @@ public class Factura implements Serializable {
 
 	}
 	//Metodo actualizarInventario
+	//Encargado de actualizar el inventario de los productos cuando se instancia una factua
+	//Entradas:
+	//-productos recibe un Producto con el proposito de verificar a cual lista de productos pertenece
+	//-cantidad es un entero que almacena la cantidad a restar de inventario de dicho producto
+	//Salida
+	//Actualiza el inventario de un producto
+	
+	
+	
 	public void actualizarInventario(Producto producto, int cantidad) {
 		List<Aseo> productosAseo = Aseo.productosAseo;
 		List<Abarrote> productosAbarrote = Abarrote.productosAbarrotes;
@@ -66,6 +76,35 @@ public class Factura implements Serializable {
 		}
 
 	}
+	//Metodo actualizarInventario
+	//Encargado de actualizar el inventario de los productos cuando se instancia una factua
+	//Entradas:
+	//-productos recibe un Producto con el proposito de verificar a cual lista de productos pertenece
+	//Salida:
+	//-Actualiza el inventario de dicho producto restandole 1 unidad
+	public void actualizarInventario(Producto producto) {
+		List<Aseo> productosAseo = Aseo.productosAseo;
+		List<Abarrote> productosAbarrote = Abarrote.productosAbarrotes;
+		List<Juguete> productosJuguete = Juguete.productosJuguetes;
+
+		int index = -1;
+		int nuevoInventario = 0;
+		if (productosAseo.indexOf(producto) != -1) {
+			index = productosAseo.indexOf(producto);
+			nuevoInventario = productosAseo.get(index).getInventario() - 1;
+			productosAseo.get(index).setInventario(nuevoInventario);
+		} else if (productosAbarrote.indexOf(producto) != -1) {
+			index = productosAbarrote.indexOf(producto);
+			nuevoInventario = productosAbarrote.get(index).getInventario() - 1;
+			productosAbarrote.get(index).setInventario(nuevoInventario);
+		} else if (productosJuguete.indexOf(producto) != -1) {
+			index = productosJuguete.indexOf(producto);
+			nuevoInventario = productosJuguete.get(index).getInventario() - 1;
+			productosJuguete.get(index).setInventario(nuevoInventario);
+		}
+
+	}
+	
 	//Metodo toString que retorna una descripcion de la factura y todos los productos asociados a ella
 	public String toString() {
 		String impress = "Esta factura se identifica con el codigo: " + codigo + "\nFue expedida en la fecha: " + fecha + "\nFue pagada con: " + cliente.getMetodo_pago() +
@@ -75,8 +114,8 @@ public class Factura implements Serializable {
 		}
 		return impress;
 	}
-	//Metodo cantProductVentDebCred que devuelve la cantidad de productos que
-	//pagaron con Debito o Credito
+	//Metodo cantProductVentDebCred que devuelve un entero con la cantidad de productos que se pagaron con Debito o Credito
+	
 	public static int cantProductVentDebCred() {
 		int cant = 0;
 		
@@ -92,7 +131,7 @@ public class Factura implements Serializable {
 		
 		return cant;
 	}
-	//Metodo masVendido retorna el metodo toString del Producto más vendido.
+	//Metodo masVendido retorna el objeto producto mas vendido en la tienda
 	public static Producto masVendido() {
 		HashMap<Producto, Integer> prodxcant = new HashMap<Producto, Integer>();
 		for (Factura f : facturas) {

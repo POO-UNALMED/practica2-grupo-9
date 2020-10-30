@@ -9,6 +9,11 @@ public class Abarrote extends Producto implements Instructivo, Serializable {
 	private String unidad;
 	public static List<Abarrote> productosAbarrotes = new ArrayList<Abarrote> ();
 	
+	public Abarrote() {
+		this(1, "NaN", 0, 0, 0, "NaN", "NaN", false, "NaN");
+		
+	}
+	
 	public Abarrote(int codigo,String nombre,int inventario,float precio,float inversion,
 			String categoria,String tipo,Boolean perecedero,String unidad) {
 		super(codigo, nombre, inventario, precio, inversion, categoria, tipo);
