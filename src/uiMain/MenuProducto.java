@@ -17,8 +17,7 @@ import gestorAplicacion.productos.Juguete;
 
 public class MenuProducto {
 
-	/* 
-	 * Muestra en un formato definido y estilizado los elementos por medio del toString de cada subclase
+	/* Muestra en un formato definido y estilizado los elementos por medio del toString de cada subclase
 	 * de productos y en el siguiente orden, Productos de Aseo, Productos de Abarrotes y Productos de Juguete 
 	 * 
 	 * Entradas: Ningun Parametro. Utiliza arreglos dinamicos definidos como estaticos de cada subclase
@@ -63,8 +62,7 @@ public class MenuProducto {
 
 	}
 	
-	/*
-	 * Se encarga de validar si el id ingresado por el usuario es acorde con los elementos definidos en cada lista dinamica
+	/*Se encarga de validar si el id ingresado por el usuario es acorde con los elementos definidos en cada lista dinamica
 	 * de las subclases de productos
 	 * 
 	 * Entradas: 

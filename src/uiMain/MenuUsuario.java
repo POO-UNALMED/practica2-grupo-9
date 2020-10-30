@@ -12,8 +12,7 @@ import gestorAplicacion.finanzas.Factura;
 public class MenuUsuario {
 
 	
-	/*
-	 * metodo encargado de crear una nueva instancia de cliente
+	/* metodo encargado de crear una nueva instancia de cliente
 	 * 
 	 * Entrada:
 	 * -metodo es un entero de 1 a 3 que se encarga de definir si el cliente desea pagar con tarjeta debito, credito o en efectivo
@@ -36,8 +35,7 @@ public class MenuUsuario {
 		return cliente;
 
 	}
-	/*
-	 * Modifica el nivel de afiliacion del cliente
+	/* Modifica el nivel de afiliacion del cliente
 	 * 
 	 * Entradas: 
 	 * -opcion es un entero de 1 a 2 que define si se quiere aumentar o disminuir el nivel de afiliacion
@@ -52,8 +50,7 @@ public class MenuUsuario {
 			cliente.disminuirAfiliacion();
 		}
 	}
-	/*
-	 * Muestra un listado de las facturas asociadas a ese cliente
+	/* Muestra un listado de las facturas asociadas a ese cliente
 	 * 
 	 * Entrada: cliente recibe el objeto cliente de la sesion actual
 	 * Salida: Muestra un listado de las facturas asociadas al cliente, utiliza el toString de factura
