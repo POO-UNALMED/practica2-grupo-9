@@ -13,6 +13,7 @@ import java.util.*;
 
 import BaseDatos.Reader;
 import BaseDatos.Writer;
+import exceptions.noExisteElProducto;
 import gestorAplicacion.finanzas.Cliente;
 import gestorAplicacion.finanzas.Factura;
 import gestorAplicacion.productos.Abarrote;
@@ -22,7 +23,7 @@ import gestorAplicacion.productos.Producto;
 
 public class UserInterface {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws noExisteElProducto {
 
 		Reader.Read(); //llamada al metodo Read de la clase Reader encargada de cargar los objetos de los .txt a sus respectivas listas dinamicas en cada clase
 
@@ -138,8 +139,13 @@ public class UserInterface {
 						option = scan.nextInt();
 						System.out.print(Mensajes.cantidad);
 						cantidad = scan.nextInt();
-
+						
+						
 						MenuTienda.validarProducto(option, cantidad, productos, cantidades);
+						
+						
+						
+						/*MenuTienda.validarProducto(option, cantidad, productos, cantidades);*/
 
 						break;
 
