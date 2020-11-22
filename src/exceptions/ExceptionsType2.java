@@ -7,7 +7,4 @@ public class ExceptionsType2 extends ErrorAplicacion {
 		
 	}
 
-	public void metodo1() throws ErrorAplicacion {
-
-	}
 }

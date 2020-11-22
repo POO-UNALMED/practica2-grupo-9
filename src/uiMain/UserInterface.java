@@ -25,7 +25,7 @@ public class UserInterface {
 
 	public static void main(String[] args) throws noExisteElProducto {
 
-		Reader.Read(); //llamada al metodo Read de la clase Reader encargada de cargar los objetos de los .txt a sus respectivas listas dinamicas en cada clase
+		new Reader();//Reader.Read(); //llamada al metodo Read de la clase Reader encargada de cargar los objetos de los .txt a sus respectivas listas dinamicas en cada clase
 
 		Scanner scan = new Scanner(System.in);
 
@@ -315,7 +315,7 @@ public class UserInterface {
 				
 				System.out.println(Mensajes.seccionar);
 				System.out.println(Mensajes.despedida);
-				Writer.Write();//llamada al metodo Write de la clase Writer encargada de sobreescribir los objetos de los .txt preservando el estado actual del programa
+				new Writer();//Writer.Write();//llamada al metodo Write de la clase Writer encargada de sobreescribir los objetos de los .txt preservando el estado actual del programa
 				exit = true;
 				break;
 			default:

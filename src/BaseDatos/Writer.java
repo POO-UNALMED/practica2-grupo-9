@@ -6,6 +6,7 @@ package BaseDatos;
 
 import java.io.*;
 
+import exceptions.ProblemaEscritura;
 import gestorAplicacion.finanzas.Factura;
 import gestorAplicacion.productos.Abarrote;
 import gestorAplicacion.productos.Aseo;
@@ -14,9 +15,13 @@ import gestorAplicacion.productos.Juguete;
 public class Writer {
 	static File PATH = new File("");
 	static ObjectOutputStream outputs;
+	
+	public Writer() {
+		Write();
+	}
 
 	//este es el metodo principal de esta clase donde podremos modificar los archivos .txt de nuestra base de datos
-	public static void Write() {
+	public void Write() {
 
 		try {
 
@@ -53,7 +58,8 @@ public class Writer {
 			outputs.close();
 
 		} catch (IOException error) {
-			error.printStackTrace();
+			System.out.println(new ProblemaEscritura(error.getMessage()));
+			//error.printStackTrace();
 		}
 
 	}

@@ -11,6 +11,8 @@ package uiMain;
 import java.util.Date;
 import java.util.Scanner;
 
+import exceptions.InventarioIncorrecto;
+import exceptions.noExisteElProducto;
 import gestorAplicacion.productos.Abarrote;
 import gestorAplicacion.productos.Aseo;
 import gestorAplicacion.productos.Juguete;
@@ -118,58 +120,75 @@ public class MenuProducto {
 	 * */
 	
 	public static void actualizarInventario(int opcion, int idProducto, int cantidad) {
+		
+		try {
+			int index = -1;
+			int nuevoInventario = -1;
+			
+			if (cantidad < 0) { throw new InventarioIncorrecto(cantidad, 0); }
+			
+			if (validarListas(1, idProducto)) {
 
-		int index = -1;
-		int nuevoInventario = -1;
+				index = idProducto - 1;
+				if (opcion == 1) {
+					nuevoInventario = Aseo.productosAseo.get(index).getInventario() + cantidad;
+				} else if (opcion == 2 && Aseo.productosAseo.get(index).getInventario() >= cantidad) {
+					nuevoInventario = Aseo.productosAseo.get(index).getInventario() - cantidad;
+				} else {
+					//System.out.println(Mensajes.accionNoRealizada);
+					throw new InventarioIncorrecto(cantidad, Aseo.productosAseo.get(index).getInventario());
+				}
 
-		if (validarListas(1, idProducto)) {
+				if (nuevoInventario >= 0) {
+					Aseo.productosAseo.get(index).setInventario(nuevoInventario);
+				}
 
-			index = idProducto - 1;
-			if (opcion == 1) {
-				nuevoInventario = Aseo.productosAseo.get(index).getInventario() + cantidad;
-			} else if (opcion == 2 && Aseo.productosAseo.get(index).getInventario() >= cantidad) {
-				nuevoInventario = Aseo.productosAseo.get(index).getInventario() - cantidad;
+			} else if (validarListas(2, idProducto)) {
+
+				index = idProducto - Aseo.productosAseo.size() - 1;
+				if (opcion == 1) {
+					nuevoInventario = Abarrote.productosAbarrotes.get(index).getInventario() + cantidad;
+				} else if (opcion == 2 && Abarrote.productosAbarrotes.get(index).getInventario() >= cantidad) {
+					nuevoInventario = Abarrote.productosAbarrotes.get(index).getInventario() - cantidad;
+				} else {
+					throw new InventarioIncorrecto(cantidad, Abarrote.productosAbarrotes.get(index).getInventario());
+					//System.out.println(Mensajes.accionNoRealizada);
+				}
+
+				if (nuevoInventario >= 0) {
+					Abarrote.productosAbarrotes.get(index).setInventario(nuevoInventario);
+				}
+
+			} else if (validarListas(3, idProducto)) {
+
+				index = idProducto - (Aseo.productosAseo.size() + Abarrote.productosAbarrotes.size()) - 1;
+				if (opcion == 1) {
+					nuevoInventario = Juguete.productosJuguetes.get(index).getInventario() + cantidad;
+				} else if (opcion == 2 && Juguete.productosJuguetes.get(index).getInventario() >= cantidad) {
+					nuevoInventario = Juguete.productosJuguetes.get(index).getInventario() - cantidad;
+				} else {
+					throw new InventarioIncorrecto(cantidad, Juguete.productosJuguetes.get(index).getInventario());
+					//System.out.println(Mensajes.accionNoRealizada);
+				}
+
+				if (nuevoInventario >= 0) {
+					Juguete.productosJuguetes.get(index).setInventario(nuevoInventario);
+				}
+
 			} else {
-				System.out.println(Mensajes.accionNoRealizada);
+				throw new noExisteElProducto(idProducto);
+				//System.out.println(Mensajes.noExisteID);
 			}
+		} catch (InventarioIncorrecto error) {
+			System.out.println(error + " " + error.diferenciaInventario());
+		} catch (noExisteElProducto error) {
+			System.out.println(error);
+		} catch (ArrayIndexOutOfBoundsException error) {
 
-			if (nuevoInventario >= 0) {
-				Aseo.productosAseo.get(index).setInventario(nuevoInventario);
-			}
-
-		} else if (validarListas(2, idProducto)) {
-
-			index = idProducto - Aseo.productosAseo.size() - 1;
-			if (opcion == 1) {
-				nuevoInventario = Abarrote.productosAbarrotes.get(index).getInventario() + cantidad;
-			} else if (opcion == 2 && Abarrote.productosAbarrotes.get(index).getInventario() >= cantidad) {
-				nuevoInventario = Abarrote.productosAbarrotes.get(index).getInventario() - cantidad;
-			} else {
-				System.out.println(Mensajes.accionNoRealizada);
-			}
-
-			if (nuevoInventario >= 0) {
-				Abarrote.productosAbarrotes.get(index).setInventario(nuevoInventario);
-			}
-
-		} else if (validarListas(3, idProducto)) {
-
-			index = idProducto - (Aseo.productosAseo.size() + Abarrote.productosAbarrotes.size()) - 1;
-			if (opcion == 1) {
-				nuevoInventario = Juguete.productosJuguetes.get(index).getInventario() + cantidad;
-			} else if (opcion == 2 && Juguete.productosJuguetes.get(index).getInventario() >= cantidad) {
-				nuevoInventario = Juguete.productosJuguetes.get(index).getInventario() - cantidad;
-			} else {
-				System.out.println(Mensajes.accionNoRealizada);
-			}
-
-			if (nuevoInventario >= 0) {
-				Juguete.productosJuguetes.get(index).setInventario(nuevoInventario);
-			}
-
-		} else {
-			System.out.println(Mensajes.noExisteID);
+			System.out.println(new noExisteElProducto(idProducto));
 		}
+		
+		
 	}
 
 	/*

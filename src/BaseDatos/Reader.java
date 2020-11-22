@@ -7,6 +7,7 @@ package BaseDatos;
 import java.io.*;
 import java.util.*;
 
+import exceptions.ProblemaLectura;
 import gestorAplicacion.finanzas.Factura;
 import gestorAplicacion.productos.Abarrote;
 import gestorAplicacion.productos.Aseo;
@@ -16,9 +17,13 @@ public class Reader {
 	static Object object;
 	static File PATH = new File("");
 	private static ObjectInputStream inputs;
-
+	
+	public Reader() {
+		Read();
+	}
+	
 	//Este es el metodo principal que leera todos los archivos .txt correspondientes a nuestra base de datos
-	public static void Read() {
+	private void Read() {
 		try {
 
 			inputs = new ObjectInputStream(
@@ -66,7 +71,8 @@ public class Reader {
 			inputs.close();
 
 		} catch (IOException error) {
-			System.out.println("Error flujo de inicializacion " + error);
+			//System.out.println("Error flujo de inicializacion " + error);
+			System.out.println(new ProblemaLectura(error.getMessage()));
 		} catch (ClassNotFoundException error) {
 			error.printStackTrace();
 		}
