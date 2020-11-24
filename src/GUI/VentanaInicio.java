@@ -43,9 +43,12 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
-
-public class VentanaInicio extends JFrame {
+import javafx.application.*;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+public class VentanaInicio extends JFrame{
 	private JPanel contentPane;
+	public int a = 0;
 
 	/**
 	 * Launch the application.
@@ -61,6 +64,8 @@ public class VentanaInicio extends JFrame {
 				}
 			}
 		});
+		
+		
 	}
 
 	/**
@@ -116,10 +121,18 @@ public class VentanaInicio extends JFrame {
 		JButton BotonINICIO = new JButton("INICIO");
 		BotonINICIO.addActionListener(new ActionListener() {
 			
-			public void actionPerformed(ActionEvent arg0) {
-				
-//--				//BOTON DE INICIO
-				
+			//Funcionalidad para abrir pestaña principal con el botón y cerrar la pestaña actual
+			public void actionPerformed(ActionEvent ae) {
+				if(a < 1) {
+				setVisible(false);
+				Application.launch(VentanaPrincipal.class, new String[0]);
+				a = a + 1;
+				//javafx.application.Application.launch(VentanaPrincipal.class);
+				}
+				else {
+					setVisible(false);
+					//javafx.application.Application.launch(VentanaPrincipal.class);
+				}
 			}
 		});
 		BotonINICIO.setBounds(0, 0, 251, 200);

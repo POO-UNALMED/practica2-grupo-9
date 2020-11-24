@@ -1,6 +1,7 @@
 package GUI;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -15,6 +16,7 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SeparatorMenuItem;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
@@ -31,6 +33,7 @@ import javafx.geometry.Pos;
 
 
 public class VentanaPrincipal extends Application{
+	public int b = 0;
 	//pane principal
 	BorderPane root = new BorderPane();
 	Label lblApp = new Label("Tu Pedido");
@@ -91,7 +94,7 @@ public class VentanaPrincipal extends Application{
 		Label titulo1 = new Label("Compras");
 		titulo1.setStyle("-fx-border-color: black;");
 		GridPane.setHalignment(titulo1, javafx.geometry.HPos.CENTER);
-		Label texto1 = new Label("En esta pestaña puede añadir productos al carrito para luego proceder a pagarlos.");
+		Label texto1 = new Label("En esta pestaña puede añadir o eliminar productos \nen el carrito para luego proceder a pagarlos.");
 		texto1.setStyle("-fx-border-color: black;");
 		GridPane.setHalignment(texto1, javafx.geometry.HPos.CENTER);
 		
@@ -129,11 +132,23 @@ public class VentanaPrincipal extends Application{
 		
 		
 		//Botones del vbox menuBar
+		VentanaInicio frame = new VentanaInicio();
 		menuBar = new VBox(barraMenu);
 		m0.getItems().addAll(m01,m02);
 		m1.getItems().addAll(m11,m12);
 		UnicoHandlerClass handler = new UnicoHandlerClass();
 		m0.setOnAction(handler);
+		m02.setOnAction(e -> {if(b < 1){
+			VentanaInicio.main(new String[] {});
+			primaryStage.hide();
+			b = b + 1;
+			}
+			else {
+				frame.setVisible(true);
+				primaryStage.hide();
+			}
+		});
+			
 		m1.setOnAction(handler);
 		m11.setOnAction(handler);
 		m12.setOnAction(handler);
@@ -143,7 +158,7 @@ public class VentanaPrincipal extends Application{
 		       public void handle(MouseEvent event) {
 		    	   	a.setAlertType(AlertType.INFORMATION);
 					a.setTitle("Autores");
-					a.setHeaderText("Los autores de éste hermoso proyecto :')");
+					a.setHeaderText(null);
 					a.setContentText("Juan Pablo Oquendo \nDaniel Fernando Robledo \nWilfer Mauricio Chavarria \nFaiber Salazar");
 					a.show();
 		       }
@@ -153,33 +168,23 @@ public class VentanaPrincipal extends Application{
 		
 		////Formulario de compras
 		//labels
-		Label lblCompras1 = new Label("Producto 1");
-		Label lblCompras2 = new Label("Producto 2");
-		Label lblCompras3 = new Label("Producto 3");
-		Label lblCompras4 = new Label("Producto 4");
+		Label lblCompras1 = new Label("Código del producto");
+		Label lblCompras2 = new Label("Cantidad");
+		//Text fields
+		TextField t1 = new TextField();
+		t1.setPromptText("Agregue código");
+		t1.setPrefColumnCount(10);
+		TextField t2 = new TextField();
+		t2.setPromptText("Agregue cantidad");
+		t2.setPrefColumnCount(10);
 		//Acción para el botón compra
 		btnCompras1.setOnAction(handler);
-		
-		//Menú desplegable de productos
-		String productos[] = {"Pollo","Leche","Arracacha","Yuca"};
-		ComboBox productosCB1 = new ComboBox(FXCollections.observableArrayList(productos));
-		productosCB1.setPromptText("Productos");
-		ComboBox productosCB2 = new ComboBox(FXCollections.observableArrayList(productos));
-		productosCB2.setPromptText("Productos");
-		ComboBox productosCB3 = new ComboBox(FXCollections.observableArrayList(productos));
-		productosCB3.setPromptText("Productos");
-		ComboBox productosCB4 = new ComboBox(FXCollections.observableArrayList(productos));
-		productosCB4.setPromptText("Productos");
-		
-		
 		
 		//Agregando flowpane botones al pane principal root
 		root.setTop(menuBar);
 		
 		//agregando pane compras al borderpane principal root
 		root.setCenter(inicio);
-		
-		//agregando pane compras al borderpane principal root
 		
 		
 		//agregando titulo y texto al gridpane compras
@@ -195,13 +200,9 @@ public class VentanaPrincipal extends Application{
 		
 		//agregando los elementos del gridpane compraform
 		compraForm.add(lblCompras1, 0, 0);
-		compraForm.add(productosCB1, 1, 0);
+		compraForm.add(t1, 1, 0);
 		compraForm.add(lblCompras2, 0, 1);
-		compraForm.add(productosCB2, 1, 1);
-		compraForm.add(lblCompras3, 0, 2);
-		compraForm.add(productosCB3, 1, 2);
-		compraForm.add(lblCompras4, 0, 3);
-		compraForm.add(productosCB4, 1, 3);
+		compraForm.add(t2, 1, 1);
 		compraForm.add(btnCompras1, 0, 4);
 		compraForm.add(btnCompras2, 1, 4);
 		
@@ -213,6 +214,7 @@ public class VentanaPrincipal extends Application{
 		primaryStage.show();
 		//
 	}
+	
 	public static void main(String args[]) {
 		launch(args);
 	}
@@ -244,16 +246,7 @@ public class VentanaPrincipal extends Application{
 			}			
 		}
 	}
-	
-	public class FieldPanel extends Pane{
-		//FieldPanel fp = new FieldPanel();
-		String tittuloCriterios;
-		String[] criterios;
-		String tituloValores;
-		String[] valores;
-		boolean[] habilitado;
-		public FieldPanel(String tittuloCriterios, String[] criterios, String tituloValores, String[] valores, boolean[] habilitado) {
-			
-		}
+	public class FieldPanel extends Pane {
+		
 	}
 }
