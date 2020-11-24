@@ -37,6 +37,7 @@ import javafx.geometry.Pos;
 
 
 public class VentanaPrincipal extends Application{
+		
 	List<Producto> productos = new ArrayList<Producto>();
 	List<Integer> cantidades = new ArrayList<Integer>();
 	public int b = 0;
@@ -193,7 +194,7 @@ public class VentanaPrincipal extends Application{
 		barraMenu.getMenus().addAll(m0,m1,m2);
 		
 		////Formulario de compras
-		FieldPanel panelCompras = new FieldPanel("Criterios", new String[]{"Código", "Cantidad"} , "Valores", new String[]{"Agregue código", "Agregue cantidad"}, new boolean[]{true, true});
+		FieldPanel panelCompras = new Compras("Criterios", new String[]{"Código", "Cantidad"} , "Valores", new String[]{"Agregue código", "Agregue cantidad"}, new boolean[]{true, true}, productos, cantidades);
 		//labels
 		//Label lblCompras1 = new Label("Código del producto");
 		//Label lblCompras2 = new Label("Cantidad");

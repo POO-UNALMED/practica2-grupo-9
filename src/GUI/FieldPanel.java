@@ -1,4 +1,7 @@
 package GUI;
+import java.util.ArrayList;
+import java.util.List;
+
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -36,6 +39,7 @@ public class FieldPanel extends Pane {
 	Label tituloValores;
 	String[] criterios;
 	String[] valores;
+	List<TextField> elementos = new ArrayList<TextField>();
 	
 	
 	public FieldPanel(String tituloCriterios, String[] criterios, String tituloValores, String[] valores, boolean[] habilitado) {
@@ -45,13 +49,8 @@ public class FieldPanel extends Pane {
 			this.tituloValores = new Label(tituloValores);
 			this.tituloValores.setLayoutX(150);
 			this.tituloValores.setLayoutY(0);
-			Button btn1 = new Button("Añadir");
-			Button btn2 = new Button("Eliminar");
-			btn1.setLayoutX(50);
-			btn2.setLayoutX(150);
-			btn1.setLayoutY(criterios.length*25 + 40);
-			btn2.setLayoutY(criterios.length*25 + 40);
-			this.getChildren().addAll(btn1, btn2);
+			
+			
 			this.getChildren().add(this.tituloCriterios);
 			this.getChildren().add(this.tituloValores);
 			for(int i = 0; i < criterios.length; i ++) {
@@ -61,6 +60,7 @@ public class FieldPanel extends Pane {
 				this.getChildren().add(l1);
 				l1.setStyle("-fx-border-color: black;");
 				TextField t1 = new TextField();
+				elementos.add(t1);
 				t1.setPromptText(valores[i]);
 				t1.setPrefColumnCount(10);
 				t1.setLayoutX(150);

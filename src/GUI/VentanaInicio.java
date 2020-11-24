@@ -42,6 +42,9 @@ import java.awt.event.MouseEvent;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
+
+import BaseDatos.Reader;
+
 import java.awt.Color;
 import javafx.application.*;
 import javafx.scene.Parent;
@@ -54,6 +57,7 @@ public class VentanaInicio extends JFrame{
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		new Reader();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
