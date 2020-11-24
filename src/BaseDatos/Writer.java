@@ -13,8 +13,8 @@ import gestorAplicacion.productos.Aseo;
 import gestorAplicacion.productos.Juguete;
 
 public class Writer {
-	static File PATH = new File("");
-	static ObjectOutputStream outputs;
+	private File PATH = new File("");
+	private ObjectOutputStream outputs;
 	
 	public Writer() {
 		Write();

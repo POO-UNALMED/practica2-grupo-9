@@ -14,9 +14,9 @@ import gestorAplicacion.productos.Aseo;
 import gestorAplicacion.productos.Juguete;
 
 public class Reader {
-	static Object object;
-	static File PATH = new File("");
-	private static ObjectInputStream inputs;
+	private Object object;
+	private File PATH = new File("");
+	private ObjectInputStream inputs;
 	
 	public Reader() {
 		Read();
