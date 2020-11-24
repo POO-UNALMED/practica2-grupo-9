@@ -167,18 +167,19 @@ public class VentanaPrincipal extends Application{
 		barraMenu.getMenus().addAll(m0,m1,m2);
 		
 		////Formulario de compras
+		FieldPanel panelCompras = new FieldPanel("Criterios", new String[]{"Código", "Cantidad"} , "Valores", new String[]{"Agregue código", "Agregue cantidad"}, new boolean[]{true, true});
 		//labels
-		Label lblCompras1 = new Label("Código del producto");
-		Label lblCompras2 = new Label("Cantidad");
+		//Label lblCompras1 = new Label("Código del producto");
+		//Label lblCompras2 = new Label("Cantidad");
 		//Text fields
-		TextField t1 = new TextField();
-		t1.setPromptText("Agregue código");
-		t1.setPrefColumnCount(10);
-		TextField t2 = new TextField();
-		t2.setPromptText("Agregue cantidad");
-		t2.setPrefColumnCount(10);
+		//TextField t1 = new TextField();
+		//t1.setPromptText("Agregue código");
+		//t1.setPrefColumnCount(10);
+		//TextField t2 = new TextField();
+		//t2.setPromptText("Agregue cantidad");
+		//t2.setPrefColumnCount(10);
 		//Acción para el botón compra
-		btnCompras1.setOnAction(handler);
+		//btnCompras1.setOnAction(handler);
 		
 		//Agregando flowpane botones al pane principal root
 		root.setTop(menuBar);
@@ -192,19 +193,19 @@ public class VentanaPrincipal extends Application{
 		compra.add(texto1, 0, 1);
 		
 		//agregando gridpane de compraMenu al gridpane compras
-		compra.add(compraPane, 0, 2);
+		compra.add(panelCompras, 0, 2);
 		
 		//agregando gridpane de compraMenu al gridpane compras
-		compraPane.add(compraForm, 0, 0);
-		compraPane.add(compraShow, 1, 0);
+		//compraPane.add(compraForm, 0, 0);
+		//compraPane.add(compraShow, 1, 0);
 		
 		//agregando los elementos del gridpane compraform
-		compraForm.add(lblCompras1, 0, 0);
-		compraForm.add(t1, 1, 0);
-		compraForm.add(lblCompras2, 0, 1);
-		compraForm.add(t2, 1, 1);
-		compraForm.add(btnCompras1, 0, 4);
-		compraForm.add(btnCompras2, 1, 4);
+		//compraForm.add(lblCompras1, 0, 0);
+		//compraForm.add(t1, 1, 0);
+		//compraForm.add(lblCompras2, 0, 1);
+		//compraForm.add(t2, 1, 1);
+		//compraForm.add(btnCompras1, 0, 4);
+		//compraForm.add(btnCompras2, 1, 4);
 		
 		
 		//Creando el scene
@@ -245,8 +246,5 @@ public class VentanaPrincipal extends Application{
 				}
 			}			
 		}
-	}
-	public class FieldPanel extends Pane {
-		
 	}
 }
