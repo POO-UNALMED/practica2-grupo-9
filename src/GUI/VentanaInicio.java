@@ -31,6 +31,7 @@ import java.awt.Component;
 import java.awt.TextField;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.JRadioButtonMenuItem;
 import java.awt.Label;
@@ -38,6 +39,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
 
 public class VentanaInicio extends JFrame {
 	private JPanel contentPane;
@@ -76,7 +81,58 @@ public class VentanaInicio extends JFrame {
 		mnNewMenu.setHorizontalAlignment(SwingConstants.LEFT);
 		menuBar.add(mnNewMenu);
 		
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JPanel P1 = new JPanel();
+		P1.setBorder(new LineBorder(Color.BLACK));
+		P1.setBounds(5, 5, 251, 324);
+		contentPane.add(P1);
+		P1.setLayout(null);
+		
+		JPanel P3 = new JPanel();
+		P3.setBorder(new LineBorder(Color.BLACK));
+		P3.setBounds(0, 0, 251, 125);
+		P1.add(P3);
+		P3.setLayout(null);
+		
+		TextArea Bienvenida = new TextArea();
+		Bienvenida.setBounds(0, 0, 251, 125);
+		Bienvenida.setRows(5);
+		Bienvenida.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+		Bienvenida.setColumns(30);
+		Bienvenida.setText("Bienvenido al programa");
+		Bienvenida.setEditable(false);
+		P3.add(Bienvenida);
+		
+		JPanel P4 = new JPanel();
+		P4.setBorder(new LineBorder(Color.BLACK));
+		P4.setBounds(0, 124, 251, 200);
+		P1.add(P4);
+		P4.setLayout(null);
+		
+		JButton BotonINICIO = new JButton("INICIO");
+		BotonINICIO.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent arg0) {
+				
+//--				//BOTON DE INICIO
+				
+			}
+		});
+		BotonINICIO.setBounds(0, 0, 251, 200);
+		BotonINICIO.setAlignmentY(Component.BOTTOM_ALIGNMENT);
+		BotonINICIO.setAlignmentX(Component.RIGHT_ALIGNMENT);
+		P4.add(BotonINICIO);
+		
 		JMenuItem mntmNewMenuItem = new JMenuItem("DESCRIPCION");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Bienvenida.setText("Descripcion breve del Sistema");
+			}
+		});
 		
 		mnNewMenu.add(mntmNewMenuItem);
 		
@@ -87,64 +143,37 @@ public class VentanaInicio extends JFrame {
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem_1);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		
-		JPanel P1 = new JPanel();
-		P1.setBounds(5, 5, 251, 324);
-		contentPane.add(P1);
-		P1.setLayout(null);
-		
-		JPanel P3 = new JPanel();
-		P3.setBounds(0, 0, 251, 125);
-		P1.add(P3);
-		P3.setLayout(null);
-		
-		TextArea textArea = new TextArea();
-		textArea.setBounds(0, 0, 251, 125);
-		textArea.setRows(5);
-		textArea.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		textArea.setColumns(30);
-		textArea.setText("Bienvenido al programa");
-		textArea.setEditable(false);
-		P3.add(textArea);
-		
-		JPanel P4 = new JPanel();
-		P4.setBounds(0, 124, 251, 200);
-		P1.add(P4);
-		P4.setLayout(null);
-		
-		JButton VentanaPrincipal = new JButton("INICIO");
-		VentanaPrincipal.addActionListener(new ActionListener() {
-			
-			public void actionPerformed(ActionEvent arg0) {
-				
-//--				//BOTON DE INICIO
-				
-			}
-		});
-		VentanaPrincipal.setBounds(0, 0, 251, 200);
-		VentanaPrincipal.setAlignmentY(Component.BOTTOM_ALIGNMENT);
-		VentanaPrincipal.setAlignmentX(Component.RIGHT_ALIGNMENT);
-		P4.add(VentanaPrincipal);
 		
 		JPanel P2 = new JPanel();
-		P2.setBounds(266, 5, 237, 324);
+		P2.setBorder(new LineBorder(Color.BLACK));
+		P2.setBounds(266, 5, 227, 324);
 		contentPane.add(P2);
 		P2.setLayout(null);
 		
 		JPanel P5 = new JPanel();
-		P5.setBounds(0, 0, 237, 128);
+		P5.setBorder(new LineBorder(Color.BLACK));
+		P5.setBounds(0, 0, 227, 128);
 		P2.add(P5);
 		P5.setLayout(null);
+		
+		JPanel P6 = new JPanel();
+		P6.setBorder(new LineBorder(Color.BLACK));
+		P6.setBounds(0, 126, 227, 198);
+		P2.add(P6);
+		P6.setLayout(null);
+		
+		JTextPane txtpnMostrarFotosDe = new JTextPane();
+		txtpnMostrarFotosDe.setEditable(false);
+		txtpnMostrarFotosDe.setBounds(36, 89, 164, 20);
+		txtpnMostrarFotosDe.setText("Mostrar Fotos");
+		P6.add(txtpnMostrarFotosDe);
 		
 		Label label = new Label("Mauricio");
 		label.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 //				DARLE CLICK AL NOMBRE
+				
 			}
 		});
 		label.setBounds(79, 35, 62, 22);
@@ -174,21 +203,11 @@ public class VentanaInicio extends JFrame {
 		label_3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-/*--		AL DARLE CLICK AL NOMBRE*/
+/*--			AL DARLE CLICK AL NOMBRE*/
+				
 			}
 		});
 		label_3.setBounds(79, 10, 62, 22);
 		P5.add(label_3);
-		
-		JPanel P6 = new JPanel();
-		P6.setBounds(0, 126, 237, 198);
-		P2.add(P6);
-		P6.setLayout(null);
-		
-		JTextPane txtpnMostrarFotosDe = new JTextPane();
-		txtpnMostrarFotosDe.setEditable(false);
-		txtpnMostrarFotosDe.setBounds(36, 89, 164, 20);
-		txtpnMostrarFotosDe.setText("Mostrar Fotos");
-		P6.add(txtpnMostrarFotosDe);
 	}
 }
