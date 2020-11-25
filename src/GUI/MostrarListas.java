@@ -39,7 +39,7 @@ public class MostrarListas extends Pane {
 	public String mensaje() {
 		String a = "";
 		for(int i = 0; i < Compras.getProductos().size(); i++) {
-			a += Compras.getProductos().get(i).getNombre() + " " + Compras.getCantidades().get(i) + "\n";
+			a += "ID: " + (i+1) + " Producto: " + Compras.getProductos().get(i).getNombre() + " Cantidad: " + Compras.getCantidades().get(i) + "\n";
 		}
 		return a;
 	}
