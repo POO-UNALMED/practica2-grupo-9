@@ -114,7 +114,7 @@ public class MenuTienda {
 	 * cliente
 	 */
 	public static void validarProducto(int idProducto, int cantidad, List<Producto> productos,
-			List<Integer> cantidades) {
+			List<Integer> cantidades) throws noExisteElProducto, ArrayIndexOutOfBoundsException, InventarioIncorrecto{
 
 		try {
 			if (cantidad < 0) { throw new InventarioIncorrecto(cantidad, 0); }
@@ -138,14 +138,15 @@ public class MenuTienda {
 				throw new noExisteElProducto(idProducto);
 				// System.out.println(Mensajes.noExisteID);
 			}
-		}catch (InventarioIncorrecto error) {
-			System.out.println(error + " " + error.diferenciaInventario());
-		} 
-		catch (noExisteElProducto error) {
-			System.out.println(error);
-		} catch (ArrayIndexOutOfBoundsException error) {
+		}//catch (InventarioIncorrecto error) {
+			//System.out.println(error + " " + error.diferenciaInventario());
+		//} 
+		//catch (noExisteElProducto error) {
+		//	System.out.println(error);
+		//} 
+	catch (ArrayIndexOutOfBoundsException error) {
 
-			System.out.println(new noExisteElProducto(idProducto));
+			throw new noExisteElProducto(idProducto);
 		} 
 	}
 
@@ -159,7 +160,7 @@ public class MenuTienda {
 	 * Salida: Actualiza el carrito de compras con la nueva cantidad o en su defecto
 	 * elimina dicho producto del carrito
 	 */
-	public static void eliminarProducto(List<Producto> producto, List<Integer> cantidades, int id, int cantidad) {
+	public static void eliminarProducto(List<Producto> producto, List<Integer> cantidades, int id, int cantidad) throws noExisteElProducto, InventarioIncorrecto, ArrayIndexOutOfBoundsException{
 		try {
 			int index = id - 1;
 			int eliminar;
@@ -180,11 +181,17 @@ public class MenuTienda {
 				throw new InventarioIncorrecto(cantidad, cantidades.get(index));
 				//System.out.println(Mensajes.datosIncorrectos);
 			}
-		} catch (IndexOutOfBoundsException error) {
-			System.out.println(new noExisteElProducto(id));
-		} catch (InventarioIncorrecto error) {
-			System.out.println(error + " " + error.diferenciaInventario());
-		}
+		} 
+		catch (IndexOutOfBoundsException error) {
+
+			throw new noExisteElProducto(id);
+		} //catch (IndexOutOfBoundsException error) {
+		//	new noExisteElProducto(id);
+		//} 
+		
+		 //catch (InventarioIncorrecto error) {
+		//	System.out.println(error + " " + error.diferenciaInventario());
+		//}
 		
 
 	}
