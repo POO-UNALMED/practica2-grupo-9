@@ -16,6 +16,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -56,23 +57,28 @@ public class VentanaInicio extends Stage{
 		Label lblF = new Label();
 		UnicoHandlerClass handler = new UnicoHandlerClass();
 		
-		ImageView jp1 = new ImageView("/img/jp1.JPG");
-		ImageView jp2 = new ImageView("/img/jp2.JPG");
-		ImageView jp3 = new ImageView("/img/jp3.JPG");
-		ImageView jp4 = new ImageView("/img/jp4.JPG");
-		ImageView df1 = new ImageView("/img/df1.JPG");
-		ImageView df2 = new ImageView("/img/df2.JPG");
-		ImageView df3 = new ImageView("/img/df3.JPG");
-		ImageView df4 = new ImageView("/img/df4.JPG");
-		ImageView wm1 = new ImageView("/img/wm1.JPG");
-		ImageView wm2 = new ImageView("/img/wm2.JPG");
-		ImageView wm3 = new ImageView("/img/wm3.JPG");
-		ImageView wm4 = new ImageView("/img/wm4.JPG");
-		ImageView f1 = new ImageView("/img/f1.JPG");
-		ImageView f2 = new ImageView("/img/f2.JPG");
-		ImageView f3 = new ImageView("/img/f3.JPG");
-		ImageView f4 = new ImageView("/img/f4.JPG");
-		
+		ImageView jp1 = new ImageView(new Image("/img/jp1.JPG",100,100,false,false));
+		ImageView jp2 = new ImageView(new Image("/img/jp2.JPG",100,100,false,false));
+		ImageView jp3 = new ImageView(new Image("/img/jp3.JPG",100,100,false,false));
+		ImageView jp4 = new ImageView(new Image("/img/jp4.JPG",100,100,false,false));
+		ImageView df1 = new ImageView(new Image("/img/df1.JPG",100,100,false,false));
+		ImageView df2 = new ImageView(new Image("/img/df2.JPG",100,100,false,false));
+		ImageView df3 = new ImageView(new Image("/img/df3.JPG",100,100,false,false));
+		ImageView df4 = new ImageView(new Image("/img/df4.JPG",100,100,false,false));
+		ImageView wm1 = new ImageView(new Image("/img/wm1.JPG",100,100,false,false));
+		ImageView wm2 = new ImageView(new Image("/img/wm2.JPG",100,100,false,false));
+		ImageView wm3 = new ImageView(new Image("/img/wm3.JPG",100,100,false,false));
+		ImageView wm4 = new ImageView(new Image("/img/wm4.JPG",100,100,false,false));
+		ImageView f1 = new ImageView(new Image("/img/f1.JPG",100,100,false,false));
+		ImageView f2 = new ImageView(new Image("/img/f2.JPG",100,100,false,false));
+		ImageView f3 = new ImageView(new Image("/img/f3.JPG",100,100,false,false));
+		ImageView f4 = new ImageView(new Image("/img/f4.JPG",100,100,false,false));
+		ImageView img1 = new ImageView(new Image("/img/1.JPG",100,100,false,false));
+		ImageView img2 = new ImageView(new Image("/img/2.JPG",100,100,false,false));
+		ImageView img3 = new ImageView(new Image("/img/3.JPG",100,100,false,false));
+		ImageView img4 = new ImageView(new Image("/img/4.JPG",100,100,false,false));
+		ImageView img5 = new ImageView(new Image("/img/5.JPG",100,100,false,false));
+
 		//Root
 		root.setTop(bar);
 		root.setCenter(p0);
@@ -86,10 +92,9 @@ public class VentanaInicio extends Stage{
 		p0.add(p1,0,1);
 		p0.add(p2,1,1);
 		p0.setPadding(new Insets(10,10,10,10));
-		p0.setAlignment(Pos.TOP_CENTER);
+		p0.setAlignment(Pos.CENTER);
 		p0.setVgap(5);
 		p0.setHgap(5);
-		
 		
 		//BorderPane p1
 		p1.add(p3,0,0);
@@ -97,6 +102,9 @@ public class VentanaInicio extends Stage{
 		p1.setStyle("-fx-border-color: black;");
 		p1.setPadding(new Insets(10,10,10,10));
 		p1.setVgap(5);
+		p1.setMinWidth(300);
+		p1.setAlignment(Pos.TOP_CENTER);
+		
 		
 		//BorderPane p2
 		p2.add(p5,0,0);
@@ -107,44 +115,59 @@ public class VentanaInicio extends Stage{
 		p2.setStyle("-fx-border-color: black;");
 		p2.setPadding(new Insets(10,10,10,10));
 		p2.setVgap(5);
+		p2.setMinWidth(300);
 		
 		//GridPane p3
 		p3.setStyle("-fx-border-color: black;");
 		p3.setPadding(new Insets(10,10,10,10));
-		lbl.setText("Bienvenido");
+		lbl.setText("¡¡BIENVENIDO A LA TIENDA VIRTUAL, TU PEDIDO!!");
 		p3.add(lbl, 0, 0);
+		p3.setMinSize(280,140);
+		p3.setAlignment(Pos.CENTER);
 		
 		//GridPane p4
 		p4.setStyle("-fx-border-color: black;");
 		p4.setPadding(new Insets(10,10,10,10));
 		p4.setAlignment(Pos.CENTER);
-		p4.add(btn, 1, 0);
+		p4.add(btn, 0, 1);
+		btn.setMinSize(100,10);
+		btn.setPadding(new Insets(10,10,10,10));
 		btn.setOnAction(handler);
+		p4.setMinHeight(225);
+		p4.add(img1, 0, 0);
+		p4.add(img2, 0, 0);
+		p4.add(img3, 0, 0);
+		p4.add(img4, 0, 0);
+		p4.add(img5, 0, 0);
+		img2.setVisible(false);
+		img3.setVisible(false);
+		img4.setVisible(false);
+		img5.setVisible(false);
 		
 		
 		//GridPane p5
 		p5.setStyle("-fx-border-color: black;");
 		p5.setPadding(new Insets(10,10,10,10));
-		lblJP.setText("JUAN PABLO OQUENDO HINCAPIE...\n"
+		lblJP.setText("JUAN PABLO OQUENDO HINCAPIE\n\n"
 				+ "Estudiante de ingenieria de sistemas e informatica\n"
-				+ "en la Universidad Nacional de Colombia.\n"
+				+ "en la Universidad Nacional de Colombia.\n\n"
 				+ "EDAD: 22 .\n"
-				+ "SEMESTRE: Octavo .");
-		lblDF.setText("WILFER MAURICIO CHAVARRIA JARAMILLO\n"
+				+ "SEMESTRE: Octavo");
+		lblWM.setText("WILFER MAURICIO CHAVARRIA JARAMILLO\n\n"
 				+ "Estudiante de ingenieria de sistemas e informatica\n"
-				+ "en la Universidad Nacional de Colombia.\n"
+				+ "en la Universidad Nacional de Colombia.\n\n"
 				+ "EDAD: 24 .\n"
-				+ "SEMESTRE: Octavo.");
-		lblWM.setText("DANIEL FERNANDO ROBLEDO MESA...\n"
+				+ "SEMESTRE: Octavo");
+		lblDF.setText("DANIEL FERNANDO ROBLEDO MESA\n\n"
 				+ "Estudiante de ingenieria de sistemas e informatica\n"
-				+ "en la Universidad Nacional de Colombia.\n"
+				+ "en la Universidad Nacional de Colombia.\n\n"
 				+ "EDAD: 23 .\n"
 				+ "SEMESTRE: Quinto");
-		lblF.setText("FAIBER...\n"
+		lblF.setText("FAIBER SALAZAR RUIZ\n\n"
 				+ "Estudiante de ingenieria de sistemas e informatica\n"
-				+ "en la Universidad Nacional de Colombia.\n"
+				+ "en la Universidad Nacional de Colombia.\n\n"
 				+ "EDAD: 26 .\n"
-				+ "SEMESTRE: Septimo.");
+				+ "SEMESTRE: Septimo");
 		p5.add(lblJP, 0, 0);
 		p5.add(lblDF, 0, 0);
 		p5.add(lblWM, 0, 0);
@@ -152,6 +175,7 @@ public class VentanaInicio extends Stage{
 		lblF.setVisible(false);
 		lblDF.setVisible(false);
 		lblWM.setVisible(false);
+		p5.setMinSize(280,140);
 		
 		//GridPane p6
 		p6jp.setStyle("-fx-border-color: black;");
@@ -182,8 +206,10 @@ public class VentanaInicio extends Stage{
 		p6df.setVisible(false);
 		p6wm.setVisible(false);
 		p6f.setVisible(false);
-		
-		
+		p6jp.setAlignment(Pos.CENTER);
+		p6df.setAlignment(Pos.CENTER);
+		p6wm.setAlignment(Pos.CENTER);
+		p6f.setAlignment(Pos.CENTER);
 		
 		
 		lblJP.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -231,9 +257,45 @@ public class VentanaInicio extends Stage{
 		       }
 		});
 		
+		img1.setOnMouseEntered(new EventHandler<MouseEvent>() {
+		       @Override
+		       public void handle(MouseEvent event) {
+		    	   img1.setVisible(false);
+		    	   img2.setVisible(true);
+		       }
+		});
+		img2.setOnMouseEntered(new EventHandler<MouseEvent>() {
+		       @Override
+		       public void handle(MouseEvent event) {
+		    	   img2.setVisible(false);
+		    	   img3.setVisible(true);
+		       }
+		});
+		img3.setOnMouseEntered(new EventHandler<MouseEvent>() {
+		       @Override
+		       public void handle(MouseEvent event) {
+		    	   img3.setVisible(false);
+		    	   img4.setVisible(true);
+		       }
+		});
+		img4.setOnMouseEntered(new EventHandler<MouseEvent>() {
+		       @Override
+		       public void handle(MouseEvent event) {
+		    	   img4.setVisible(false);
+		    	   img5.setVisible(true);
+		       }
+		});
+		img5.setOnMouseEntered(new EventHandler<MouseEvent>() {
+		       @Override
+		       public void handle(MouseEvent event) {
+		    	   img5.setVisible(false);
+		    	   img1.setVisible(true);
+		       }
+		});
+		
 		
 		//Creando el scene
-		Scene scene = new Scene(root, 480,300);
+		Scene scene = new Scene(root, 800,600);
 		this.setTitle("Tu pedido");
 		this.setScene(scene);
 		this.show();
@@ -253,9 +315,9 @@ public class VentanaInicio extends Stage{
 					lbl.setText("DESCRIPCION.\n"
 							+ 	"Con nosotros podras realizar todas las compras\n"
 							+	"necesarias para tu hogar, es un tienda 100%\n"
-							+ 	"virtal.\n"
-							+ 	"Si le das click al boton inferiri 'Ir' podras\n"
-							+ 	"encontrar todos nustros productos.\n"
+							+ 	"virtual.\n"
+							+ 	"Si le das click al boton inferior 'Ir' podras\n"
+							+ 	"encontrar todos nuestros productos.\n"
 							+ 	"Es una pagina muy intuitiva y facil de manejar.\n");
 				}
 			}
