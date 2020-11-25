@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import GUI.Compras.UnicoHandlerClass;
+import gestorAplicacion.finanzas.Cliente;
 import gestorAplicacion.productos.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -12,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Pane;
+import uiMain.MenuTienda;
 
 public class MostrarListas extends Pane {
 	Label Producto;
@@ -31,6 +33,7 @@ public class MostrarListas extends Pane {
 		super.getChildren().addAll(btn1, btn2);
 		
 		btn1.setOnAction(eventos);
+		btn2.setOnAction(eventos);
 	}
 	
 	public String mensaje() {
@@ -41,6 +44,12 @@ public class MostrarListas extends Pane {
 		System.out.println(a);
 		return a;
 	}
+	
+	public String pago() {
+		MenuTienda.pagar(Compras.getProductos(), Compras.getCantidades(), new Cliente(22,"Credito"));
+		return "Muchas gracias por su compra.";
+	}
+	
 	class UnicoHandlerClass implements EventHandler<ActionEvent> {
 		@Override
 		public void handle(ActionEvent event) {
@@ -54,7 +63,11 @@ public class MostrarListas extends Pane {
 					a.show();
 				}
 				else if(control.equals(btn2)){
-					
+					a.setAlertType(AlertType.INFORMATION);
+					a.setTitle("Venta");
+					a.setHeaderText(null);
+					a.setContentText(pago());
+					a.show();
 				}
 			}
 			
