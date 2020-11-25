@@ -4,39 +4,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 import gestorAplicacion.productos.Producto;
-import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SeparatorMenuItem;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 
 
-public class VentanaPrincipal extends Application{
+public class VentanaPrincipal extends Stage{
 		
 	List<Producto> productos = new ArrayList<Producto>();
 	List<Integer> cantidades = new ArrayList<Integer>();
@@ -81,8 +69,7 @@ public class VentanaPrincipal extends Application{
 	//Alerta
 	Alert a = new Alert(AlertType.NONE);
 	
-	@Override
-	public void start(Stage primaryStage){		
+	VentanaPrincipal(){		
 		//estilizamos pane botones
 		//menuBar.setStyle("-fx-border-color: black;");
 		
@@ -159,22 +146,11 @@ public class VentanaPrincipal extends Application{
 		
 		
 		//Botones del vbox menuBar
-		VentanaInicio frame = new VentanaInicio();
 		menuBar = new VBox(barraMenu);
 		m0.getItems().addAll(m01,m02);
 		m1.getItems().addAll(m11,m12);
 		UnicoHandlerClass handler = new UnicoHandlerClass();
-		m0.setOnAction(handler);
-		m02.setOnAction(e -> {if(b < 1){
-			VentanaInicio.main(new String[] {});
-			primaryStage.hide();
-			b = b + 1;
-			}
-			else {
-				frame.setVisible(true);
-				primaryStage.hide();
-			}
-		});
+		m02.setOnAction(handler);
 			
 		m1.setOnAction(handler);
 		m11.setOnAction(handler);
@@ -246,15 +222,12 @@ public class VentanaPrincipal extends Application{
 		
 		//Creando el scene
 		Scene scene = new Scene(root, 480,300);
-		primaryStage.setTitle("Tu pedido");
-		primaryStage.setScene(scene);
-		primaryStage.show();
+		this.setTitle("Tu pedido");
+		this.setScene(scene);
+		this.show();
 		//
 	}
 	
-	public static void main(String args[]) {
-		launch(args);
-	}
 	//Un solo manejador de eventos
 	class UnicoHandlerClass implements EventHandler<ActionEvent> {
 		@Override
@@ -272,6 +245,10 @@ public class VentanaPrincipal extends Application{
 					carrito.setVisible(true);
 					compra.setVisible(false);
 					inicio.setVisible(false);
+				}
+				else if(control.equals(m02)){
+					new VentanaInicio2();
+					VentanaPrincipal.this.close();
 				}
 			}
 			else if (control instanceof Button){

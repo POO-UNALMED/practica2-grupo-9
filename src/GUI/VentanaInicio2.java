@@ -1,17 +1,11 @@
 package GUI;
 
 import BaseDatos.Reader;
-import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -19,22 +13,15 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 
 
-public class VentanaInicio2 extends Application{
+public class VentanaInicio2 extends Stage{
 	Label lbl = new Label();
 	TextField txf = new TextField();
 	TextArea txa = new TextArea();
@@ -43,8 +30,8 @@ public class VentanaInicio2 extends Application{
 	Button btn = new Button("Ir");
 	
 	
-	@Override
-	public void start(Stage initialStage){
+	VentanaInicio2(){
+		new Reader();
 		//Paneles
 		BorderPane root = new BorderPane();
 		GridPane p0 = new GridPane();
@@ -151,6 +138,14 @@ public class VentanaInicio2 extends Application{
 		       }
 		});
 		
+		btn.setOnMouseClicked(new EventHandler<MouseEvent>() {
+		       @Override
+		       public void handle(MouseEvent event) {
+		    	   new VentanaPrincipal();
+		    	   VentanaInicio2.this.close();
+		       }
+		});
+		
 		
 		//GridPane p6
 		p6.setStyle("-fx-border-color: black;");
@@ -160,14 +155,9 @@ public class VentanaInicio2 extends Application{
 		
 		//Creando el scene
 		Scene scene = new Scene(root, 480,300);
-		initialStage.setTitle("Tu pedido");
-		initialStage.setScene(scene);
-		initialStage.show();
-	}
-	
-	public static void main(String args[]) {
-		new Reader();
-		launch(args);
+		this.setTitle("Tu pedido");
+		this.setScene(scene);
+		this.show();
 	}
 	
 	//Un solo manejador de eventos
@@ -182,14 +172,7 @@ public class VentanaInicio2 extends Application{
 				else if(control.equals(descr)){
 					lbl.setText("Descripción");
 				}
-			}
-			else if(control instanceof Button){
-				if(control.equals(btn)){
-					Platform.exit();
-					Application.launch(VentanaPrincipal.class, new String[] {});
-				}
-			}
-			
+			}		
 		}
 	}
 }
