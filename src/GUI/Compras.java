@@ -150,6 +150,8 @@ public class Compras extends FieldPanel {
 						a.show();
 						//System.out.println();
 					} 
+					elements.get(0).setText("");
+					elements.get(1).setText("");
 				}
 			}
 			

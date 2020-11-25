@@ -148,7 +148,7 @@ public class VentanaPrincipal extends Stage{
 		GridPane.setHalignment(texto4, javafx.geometry.HPos.CENTER);
 		
 		//Texto del pane de productos
-		Label titulo5 = new Label("Facturas");
+		Label titulo5 = new Label("Productos");
 		titulo5.setStyle("-fx-border-color: black;");
 		GridPane.setHalignment(titulo5, javafx.geometry.HPos.CENTER);
 		Label texto5 = new Label("En esta pestaña se puede ver la lista de productos.");
