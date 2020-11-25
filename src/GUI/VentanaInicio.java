@@ -3,6 +3,7 @@ package GUI;
 import com.sun.prism.Image;
 
 import BaseDatos.Reader;
+import BaseDatos.Writer;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -37,7 +38,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 
 
-public class VentanaInicio extends Application{
+public class VentanaInicio extends Stage{
 	Label lbl = new Label();
 	TextField txf = new TextField();
 	TextArea txa = new TextArea();
@@ -46,8 +47,9 @@ public class VentanaInicio extends Application{
 	Button btn = new Button("Ir");
 	
 	
-	@Override
-	public void start(Stage initialStage){
+
+	VentanaInicio(){
+		new Reader();
 		//Paneles
 		BorderPane root = new BorderPane();
 		GridPane p0 = new GridPane();
@@ -157,6 +159,13 @@ public class VentanaInicio extends Application{
 		       }
 		});
 		
+		btn.setOnMouseClicked(new EventHandler<MouseEvent>() {
+		       @Override
+		       public void handle(MouseEvent event) {
+		    	   new VentanaPrincipal();
+		    	   VentanaInicio.this.close();
+		       }
+		});
 		
 		//GridPane p6
 		p6.setStyle("-fx-border-color: black;");
@@ -166,14 +175,9 @@ public class VentanaInicio extends Application{
 		
 		//Creando el scene
 		Scene scene = new Scene(root, 480,300);
-		initialStage.setTitle("Tu pedido");
-		initialStage.setScene(scene);
-		initialStage.show();
-	}
-	
-	public static void main(String args[]) {
-		new Reader();
-		launch(args);
+		this.setTitle("Tu pedido");
+		this.setScene(scene);
+		this.show();
 	}
 	
 	//Un solo manejador de eventos
@@ -183,16 +187,11 @@ public class VentanaInicio extends Application{
 			Object control=e.getSource();
 			if(control instanceof MenuItem){
 				if(control.equals(salir)){
+					new Writer();
 					Platform.exit();
 				}
 				else if(control.equals(descr)){
 					lbl.setText("Descripci�n");
-				}
-			}
-			else if(control instanceof Button){
-				if(control.equals(btn)){
-					Platform.exit();
-					Application.launch(VentanaPrincipal.class, new String[] {});
 				}
 			}
 			

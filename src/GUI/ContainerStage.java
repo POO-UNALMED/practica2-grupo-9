@@ -7,7 +7,7 @@ public class ContainerStage extends Application {
    
 	@Override
 	public void start(Stage primaryStage) {
-		new VentanaInicio2();
+		new VentanaInicio();
 		
 	}
 	

@@ -247,7 +247,7 @@ public class VentanaPrincipal extends Stage{
 					inicio.setVisible(false);
 				}
 				else if(control.equals(m02)){
-					new VentanaInicio2();
+					new VentanaInicio();
 					VentanaPrincipal.this.close();
 				}
 			}
