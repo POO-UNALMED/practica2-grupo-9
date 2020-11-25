@@ -4,6 +4,7 @@ import java.util.List;
 
 import GUI.Compras.UnicoHandlerClass;
 import gestorAplicacion.finanzas.Cliente;
+import gestorAplicacion.finanzas.Factura;
 import gestorAplicacion.productos.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -14,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Pane;
 import uiMain.MenuTienda;
+import gestorAplicacion.productos.*;
 
 public class MostrarListas extends Pane {
 	Label Producto;
@@ -63,6 +65,7 @@ public class MostrarListas extends Pane {
 					a.show();
 				}
 				else if(control.equals(btn2)){
+					System.out.println(Factura.facturas);
 					a.setAlertType(AlertType.INFORMATION);
 					a.setTitle("Venta");
 					a.setHeaderText(null);

@@ -41,7 +41,9 @@ public class FieldPanel extends Pane {
 	String[] valores;
 	List<TextField> elementos = new ArrayList<TextField>();
 	
-	
+	public FieldPanel() {
+		
+	}
 	public FieldPanel(String tituloCriterios, String[] criterios, String tituloValores, String[] valores, boolean[] habilitado) {
 			this.tituloCriterios = new Label(tituloCriterios);
 			this.tituloCriterios.setLayoutX(50);
