@@ -125,23 +125,23 @@ public class VentanaInicio extends Stage{
 		//GridPane p5
 		p5.setStyle("-fx-border-color: black;");
 		p5.setPadding(new Insets(10,10,10,10));
-		lblJP.setText("JUAN PABLO...\n"
-				+ "Estudiante de ingeniria de sistemas e informatica\n"
+		lblJP.setText("JUAN PABLO OQUENDO HINCAPIE...\n"
+				+ "Estudiante de ingenieria de sistemas e informatica\n"
 				+ "en la Universidad Nacional de Colombia.\n"
 				+ "EDAD: 22 .\n"
-				+ "SEMESTRE: ... .");
+				+ "SEMESTRE: Octavo .");
 		lblDF.setText("WILFER MAURICIO CHAVARRIA JARAMILLO\n"
-				+ "Estudiante de ingeniria de sistemas e informatica\n"
+				+ "Estudiante de ingenieria de sistemas e informatica\n"
 				+ "en la Universidad Nacional de Colombia.\n"
 				+ "EDAD: 24 .\n"
 				+ "SEMESTRE: Octavo.");
-		lblWM.setText("DANIEL FERNANDO...\n"
-				+ "Estudiante de ingeniria de sistemas e informatica\n"
+		lblWM.setText("DANIEL FERNANDO ROBLEDO MESA...\n"
+				+ "Estudiante de ingenieria de sistemas e informatica\n"
 				+ "en la Universidad Nacional de Colombia.\n"
-				+ "EDAD: ... .\n"
-				+ "SEMESTRE: ... .");
+				+ "EDAD: 23 .\n"
+				+ "SEMESTRE: Quinto");
 		lblF.setText("FAIBER...\n"
-				+ "Estudiante de ingeniria de sistemas e informatica\n"
+				+ "Estudiante de ingenieria de sistemas e informatica\n"
 				+ "en la Universidad Nacional de Colombia.\n"
 				+ "EDAD: 26 .\n"
 				+ "SEMESTRE: Septimo.");
