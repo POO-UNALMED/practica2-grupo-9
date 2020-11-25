@@ -6,7 +6,7 @@ public class InventarioIncorrecto extends ExceptionsType1 {
 	private int inventario;
 	
 	public InventarioIncorrecto(int modificar, int inventario) {
-		super("Valor de inventario incorrecto,");
+		super("\nValor de inventario incorrecto,");
 		
 		this.modificar = modificar;
 		this.inventario = inventario;

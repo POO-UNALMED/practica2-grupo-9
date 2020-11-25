@@ -141,7 +141,7 @@ public class UserInterface {
 						cantidad = scan.nextInt();
 						
 						
-						MenuTienda.validarProducto(option, cantidad, productos, cantidades);
+						//MenuTienda.validarProducto(option, cantidad, productos, cantidades);
 						
 						
 						
@@ -160,7 +160,7 @@ public class UserInterface {
 							System.out.print(Mensajes.cantidad);
 							cantidadProducto = scan.nextInt();
 
-							MenuTienda.eliminarProducto(productos, cantidades, idProducto, cantidadProducto);
+							//MenuTienda.eliminarProducto(productos, cantidades, idProducto, cantidadProducto);
 						}
 
 						break;
