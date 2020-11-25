@@ -46,6 +46,9 @@ public class VentanaPrincipal extends Stage{
 	//pane botón 2 carrito
 	GridPane carrito = new GridPane();
 	
+	//pane botón 2 Estadistico
+	GridPane estadistico = new GridPane();
+	
 	//pane compras interno
 	GridPane compraPane = new GridPane();
 	GridPane compraForm = new GridPane();
@@ -59,6 +62,7 @@ public class VentanaPrincipal extends Stage{
 	Menu m1 = new Menu("Procesos y Consultas");
 	MenuItem m11 = new MenuItem("Compras");
 	MenuItem m12 = new MenuItem("Carrito");
+	MenuItem m13 = new MenuItem("Estadisticos");
 
 	SeparatorMenuItem separator = new SeparatorMenuItem();
 	
@@ -84,6 +88,10 @@ public class VentanaPrincipal extends Stage{
 		//estilizar pane carrito
 		carrito.setStyle("-fx-border-color: black;");
 		carrito.setVisible(false);
+		
+		//estilizar pane carrito
+		estadistico.setStyle("-fx-border-color: black;");
+		estadistico.setVisible(false);
 		//estilizar pane compraForm
 		//compraForm.setStyle("-fx-border-color: black;");
 		
@@ -106,6 +114,14 @@ public class VentanaPrincipal extends Stage{
 		texto2.setStyle("-fx-border-color: black;");
 		GridPane.setHalignment(texto2, javafx.geometry.HPos.CENTER);
 		
+		//Texto del pane de Estadisticos
+		Label titulo3 = new Label("Datos estadísticos");
+		titulo3.setStyle("-fx-border-color: black;");
+		GridPane.setHalignment(titulo3, javafx.geometry.HPos.CENTER);
+		Label texto3 = new Label("En esta pestaña pueden ver los datos estadísticos.");
+		texto3.setStyle("-fx-border-color: black;");
+		GridPane.setHalignment(texto3, javafx.geometry.HPos.CENTER);
+		
 		//margenes del borderpane root
 		root.setPadding(new Insets(10,10,10,10));
 		
@@ -119,13 +135,19 @@ public class VentanaPrincipal extends Stage{
 		compra.setHgap(5);
 		compra.setAlignment(Pos.TOP_CENTER);
 		
-		//margenes, espaciado y alineación del gridpane compras
+		//margenes, espaciado y alineación del gridpane carrito
 		carrito.setPadding(new Insets(10,10,10,10));
 		carrito.setVgap(5);
 		carrito.setHgap(5);
 		carrito.setAlignment(Pos.TOP_CENTER);
 		//compra.setMaxWidth(Region.USE_COMPUTED_SIZE);
 		
+		//margenes, espaciado y alineación del gridpane estadisticos
+		estadistico.setPadding(new Insets(10,10,10,10));
+		estadistico.setVgap(5);
+		estadistico.setHgap(5);
+		estadistico.setAlignment(Pos.TOP_CENTER);
+				
 		//margenes, espaciado y alineación del gridpane compraForm
 		compraPane.setPadding(new Insets(10,10,10,10));
 		compraPane.setVgap(5);
@@ -148,13 +170,14 @@ public class VentanaPrincipal extends Stage{
 		//Botones del vbox menuBar
 		menuBar = new VBox(barraMenu);
 		m0.getItems().addAll(m01,m02);
-		m1.getItems().addAll(m11,m12);
+		m1.getItems().addAll(m11,m12,m13);
 		UnicoHandlerClass handler = new UnicoHandlerClass();
 		m02.setOnAction(handler);
 			
 		m1.setOnAction(handler);
 		m11.setOnAction(handler);
 		m12.setOnAction(handler);
+		m13.setOnAction(handler);
 		Label menuLabel = new Label("Ayuda");
 		menuLabel.setOnMouseClicked(new EventHandler<MouseEvent>() {
 		       @Override
@@ -186,6 +209,11 @@ public class VentanaPrincipal extends Stage{
 		
 		////Menú carrito
 		MostrarListas panelCarrito = new MostrarListas(productos, cantidades);
+		
+	    ////Menú estadisticos
+		Estadisticos panelEstadistico = new Estadisticos();
+		
+			
 		//Agregando flowpane botones al pane principal root
 		root.setTop(menuBar);
 		
@@ -201,11 +229,18 @@ public class VentanaPrincipal extends Stage{
 		carrito.add(titulo2, 0, 0);
 		carrito.add(texto2, 0, 1);
 		
+		//agregando titulo y texto al gridpane estadisticos
+		estadistico.add(titulo3, 0, 0);
+		estadistico.add(texto3, 0, 1);
+				
 		//agregando gridpane de compraMenu al gridpane compras
 		compra.add(panelCompras, 0, 2);
 		
 		//agregando gridpane de compraMenu al gridpane carrito
 		carrito.add(panelCarrito, 0, 2);
+		
+		//agregando gridpane de compraMenu al gridpane carrito
+		estadistico.add(panelEstadistico, 0, 2);
 		
 		//agregando gridpane de compraMenu al gridpane compras
 		//compraPane.add(compraForm, 0, 0);
@@ -237,12 +272,21 @@ public class VentanaPrincipal extends Stage{
 				if(control.equals(m11)){
 					root.setCenter(compra);
 					compra.setVisible(true);
+					estadistico.setVisible(false);
 					carrito.setVisible(false);
 					inicio.setVisible(false);
 				}
 				else if(control.equals(m12)){
 					root.setCenter(carrito);
 					carrito.setVisible(true);
+					estadistico.setVisible(false);
+					compra.setVisible(false);
+					inicio.setVisible(false);
+				}
+				else if(control.equals(m13)){
+					root.setCenter(estadistico);
+					estadistico.setVisible(true);
+					carrito.setVisible(false);
 					compra.setVisible(false);
 					inicio.setVisible(false);
 				}
