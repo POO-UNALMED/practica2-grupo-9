@@ -128,7 +128,7 @@ public class VentanaInicio extends Stage{
 		lblJP.setText("JUAN PABLO...\n"
 				+ "Estudiante de ingeniria de sistemas e informatica\n"
 				+ "en la Universidad Nacional de Colombia.\n"
-				+ "EDAD: ... .\n"
+				+ "EDAD: 22 .\n"
 				+ "SEMESTRE: ... .");
 		lblDF.setText("WILFER MAURICIO CHAVARRIA JARAMILLO\n"
 				+ "Estudiante de ingeniria de sistemas e informatica\n"
