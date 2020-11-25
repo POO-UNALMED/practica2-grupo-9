@@ -26,42 +26,41 @@ public class MenuProducto {
 	 * Salidad: Un listado de los productos definidos hasta el momento.
 	 * */
 	
-	public static void mostrarProducto() {
-		System.out.println(Mensajes.listaDeProductos);
-		System.out.println(Mensajes.cabeceras);
+	public static String mostrarProducto() {
+		
 
 		int index = 0;
 
 		if (!Aseo.productosAseo.isEmpty()) {
 			for (Aseo aseo : Aseo.productosAseo) {
 				index++;
-				System.out.println("| " + index + "  |  " + aseo.getCodigo() + "  |  " + aseo.getNombre() + "  |  "
-						+ aseo.getInventario() + "  |  " + aseo.getPrecio());
+				return "| " + index + "  |  " + aseo.getCodigo() + "  |  " + aseo.getNombre() + "  |  "
+						+ aseo.getInventario() + "  |  " + aseo.getPrecio();
 			}
 		} else {
-			System.out.println(Mensajes.noProductosAseo);
+			return Mensajes.noProductosAseo;
 		}
 
 		if (!Abarrote.productosAbarrotes.isEmpty()) {
 			for (Abarrote abarrote : Abarrote.productosAbarrotes) {
 				index++;
-				System.out.println("| " + index + "  |  " + abarrote.getCodigo() + "  |  " + abarrote.getNombre()
-						+ "  |  " + abarrote.getInventario() + "  |  " + abarrote.getPrecio());
+				return "| " + index + "  |  " + abarrote.getCodigo() + "  |  " + abarrote.getNombre()
+						+ "  |  " + abarrote.getInventario() + "  |  " + abarrote.getPrecio();
 			}
 		} else {
-			System.out.println(Mensajes.noProductosAbarrote);
+			return Mensajes.noProductosAbarrote;
 		}
 
 		if (!Juguete.productosJuguetes.isEmpty()) {
 			for (Juguete juguete : Juguete.productosJuguetes) {
 				index++;
-				System.out.println("| " + index + "  |  " + juguete.getCodigo() + "  |  " + juguete.getNombre()
-						+ "  |  " + juguete.getInventario() + "  |  " + juguete.getPrecio());
+				return "| " + index + "  |  " + juguete.getCodigo() + "  |  " + juguete.getNombre()
+						+ "  |  " + juguete.getInventario() + "  |  " + juguete.getPrecio();
 			}
 		} else {
-			System.out.println(Mensajes.noProductosJuguete);
+			return Mensajes.noProductosJuguete;
 		}
-
+		return "";
 	}
 	
 	/*Se encarga de validar si el id ingresado por el usuario es acorde con los elementos definidos en cada lista dinamica

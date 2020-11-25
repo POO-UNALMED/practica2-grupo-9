@@ -52,6 +52,9 @@ public class VentanaPrincipal extends Stage{
 	//pane botón 2 facturas
 	GridPane facturas = new GridPane();
 	
+	//pane botón 2 productos
+	GridPane product = new GridPane();
+	
 	//pane compras interno
 	GridPane compraPane = new GridPane();
 	GridPane compraForm = new GridPane();
@@ -67,6 +70,7 @@ public class VentanaPrincipal extends Stage{
 	MenuItem m12 = new MenuItem("Carrito");
 	MenuItem m13 = new MenuItem("Estadisticos");
 	MenuItem m14 = new MenuItem("Facturas");
+	MenuItem m15 = new MenuItem("Productos");
 
 	SeparatorMenuItem separator = new SeparatorMenuItem();
 	
@@ -79,6 +83,7 @@ public class VentanaPrincipal extends Stage{
 	
 	Estadisticos panelEstadistico = new Estadisticos();
 	Facturas panelFactura = new Facturas();
+	Productos panelProductos = new Productos();
 	
 	VentanaPrincipal(){		
 		//estilizamos pane botones
@@ -142,6 +147,14 @@ public class VentanaPrincipal extends Stage{
 		texto4.setStyle("-fx-border-color: black;");
 		GridPane.setHalignment(texto4, javafx.geometry.HPos.CENTER);
 		
+		//Texto del pane de productos
+		Label titulo5 = new Label("Facturas");
+		titulo5.setStyle("-fx-border-color: black;");
+		GridPane.setHalignment(titulo5, javafx.geometry.HPos.CENTER);
+		Label texto5 = new Label("En esta pestaña se puede ver la lista de productos.");
+		texto5.setStyle("-fx-border-color: black;");
+		GridPane.setHalignment(texto5, javafx.geometry.HPos.CENTER);
+		
 		//margenes del borderpane root
 		root.setPadding(new Insets(10,10,10,10));
 		
@@ -168,12 +181,18 @@ public class VentanaPrincipal extends Stage{
 		estadistico.setHgap(5);
 		estadistico.setAlignment(Pos.TOP_CENTER);
 		
-		//margenes, espaciado y alineación del gridpane estadisticos
+		//margenes, espaciado y alineación del gridpane factura
 		facturas.setPadding(new Insets(10,10,10,10));
 		facturas.setVgap(5);
 		facturas.setHgap(5);
 		facturas.setAlignment(Pos.TOP_CENTER);
-				
+		
+		//margenes, espaciado y alineación del gridpane producto
+		product.setPadding(new Insets(10,10,10,10));
+		product.setVgap(5);
+		product.setHgap(5);
+		product.setAlignment(Pos.TOP_CENTER);
+		
 		//margenes, espaciado y alineación del gridpane compraForm
 		compraPane.setPadding(new Insets(10,10,10,10));
 		compraPane.setVgap(5);
@@ -196,7 +215,7 @@ public class VentanaPrincipal extends Stage{
 		//Botones del vbox menuBar
 		menuBar = new VBox(barraMenu);
 		m0.getItems().addAll(m01,m02);
-		m1.getItems().addAll(m11,m12,m13,m14);
+		m1.getItems().addAll(m11,m12,m13,m14, m15);
 		UnicoHandlerClass handler = new UnicoHandlerClass();
 		m02.setOnAction(handler);
 			
@@ -205,6 +224,7 @@ public class VentanaPrincipal extends Stage{
 		m12.setOnAction(handler);
 		m13.setOnAction(handler);
 		m14.setOnAction(handler);
+		m15.setOnAction(handler);
 		Label menuLabel = new Label("Ayuda");
 		menuLabel.setOnMouseClicked(new EventHandler<MouseEvent>() {
 		       @Override
@@ -260,9 +280,13 @@ public class VentanaPrincipal extends Stage{
 		estadistico.add(titulo3, 0, 0);
 		estadistico.add(texto3, 0, 1);
 		
-		//agregando titulo y texto al gridpane estadisticos
+		//agregando titulo y texto al gridpane factura
 		facturas.add(titulo4, 0, 0);
 		facturas.add(texto4, 0, 1);
+		
+		//agregando titulo y texto al gridpane producto
+		product.add(titulo5, 0, 0);
+		product.add(texto5, 0, 1);
 				
 		//agregando gridpane de compraMenu al gridpane compras
 		compra.add(panelCompras, 0, 2);
@@ -270,11 +294,14 @@ public class VentanaPrincipal extends Stage{
 		//agregando gridpane de compraMenu al gridpane carrito
 		carrito.add(panelCarrito, 0, 2);
 		
-		//agregando gridpane de compraMenu al gridpane carrito
+		//agregando gridpane de compraMenu al gridpane estadistico
 		estadistico.add(panelEstadistico, 0, 2);
 		
-		//agregando gridpane de compraMenu al gridpane carrito
+		//agregando gridpane de compraMenu al gridpane factura
 		facturas.add(panelFactura, 0, 2);
+		
+		//agregando gridpane de compraMenu al gridpane producto
+		product.add(panelProductos, 0, 2);
 		
 		//agregando gridpane de compraMenu al gridpane compras
 		//compraPane.add(compraForm, 0, 0);
@@ -305,6 +332,7 @@ public class VentanaPrincipal extends Stage{
 				if(control.equals(m11)){
 					root.setCenter(compra);
 					compra.setVisible(true);
+					product.setVisible(false);
 					estadistico.setVisible(false);
 					carrito.setVisible(false);
 					inicio.setVisible(false);
@@ -313,6 +341,7 @@ public class VentanaPrincipal extends Stage{
 				else if(control.equals(m12)){
 					root.setCenter(carrito);
 					carrito.setVisible(true);
+					product.setVisible(false);
 					estadistico.setVisible(false);
 					compra.setVisible(false);
 					inicio.setVisible(false);
@@ -325,6 +354,7 @@ public class VentanaPrincipal extends Stage{
 					panelEstadistico.setGananciasNetas();
 					root.setCenter(estadistico);
 					estadistico.setVisible(true);
+					product.setVisible(false);
 					carrito.setVisible(false);
 					compra.setVisible(false);
 					inicio.setVisible(false);
@@ -334,6 +364,17 @@ public class VentanaPrincipal extends Stage{
 					panelFactura.setTodo();
 					root.setCenter(facturas);
 					facturas.setVisible(true);
+					product.setVisible(false);
+					estadistico.setVisible(false);
+					carrito.setVisible(false);
+					compra.setVisible(false);
+					inicio.setVisible(false);
+				}
+				else if(control.equals(m15)){
+					panelProductos.setTodo();
+					root.setCenter(product);
+					product.setVisible(true);
+					facturas.setVisible(false);
 					estadistico.setVisible(false);
 					carrito.setVisible(false);
 					compra.setVisible(false);
