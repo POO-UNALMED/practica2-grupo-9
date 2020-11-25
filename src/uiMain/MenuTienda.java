@@ -210,7 +210,7 @@ public class MenuTienda {
 			totalVenta += productos.get(i).getPrecio() * cantidades.get(i);
 		}
 		new Factura(productos, cantidades, totalVenta, cliente);
-		System.out.println("Aqui va el metodo pagar de la clase MenuTienda");
+		System.out.println("____________________________________________________________________");
 		System.out.println(productos);
 		System.out.println(cantidades);
 		productos.clear();

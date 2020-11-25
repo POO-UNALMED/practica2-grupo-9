@@ -73,6 +73,8 @@ public class VentanaPrincipal extends Stage{
 	//Alerta
 	Alert a = new Alert(AlertType.NONE);
 	
+	Estadisticos panelEstadistico = new Estadisticos();
+	
 	VentanaPrincipal(){		
 		//estilizamos pane botones
 		//menuBar.setStyle("-fx-border-color: black;");
@@ -211,7 +213,7 @@ public class VentanaPrincipal extends Stage{
 		MostrarListas panelCarrito = new MostrarListas(productos, cantidades);
 		
 	    ////Menú estadisticos
-		Estadisticos panelEstadistico = new Estadisticos();
+		
 		
 			
 		//Agregando flowpane botones al pane principal root
@@ -254,7 +256,6 @@ public class VentanaPrincipal extends Stage{
 		//compraForm.add(btnCompras1, 0, 4);
 		//compraForm.add(btnCompras2, 1, 4);
 		
-		
 		//Creando el scene
 		Scene scene = new Scene(root, 480,300);
 		this.setTitle("Tu pedido");
@@ -284,6 +285,10 @@ public class VentanaPrincipal extends Stage{
 					inicio.setVisible(false);
 				}
 				else if(control.equals(m13)){
+					panelEstadistico.setMasVendido();
+					panelEstadistico.setCantidadCredito();
+					panelEstadistico.setVentasTotales();
+					panelEstadistico.setGananciasNetas();
 					root.setCenter(estadistico);
 					estadistico.setVisible(true);
 					carrito.setVisible(false);
