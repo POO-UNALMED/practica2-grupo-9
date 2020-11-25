@@ -39,8 +39,10 @@ public class Factura implements Serializable {
 			actualizarInventario(productos.get(i), cantidades.get(i));
 
 		}
+		
 
 		facturas.add(this);
+
 		cliente.agregarFactura(this);
 
 	}

@@ -37,7 +37,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 
 
-public class VentanaInicio extends Application{
+public class VentanaInicio extends Stage{
 	Label lbl = new Label();
 	TextField txf = new TextField();
 	TextArea txa = new TextArea();
@@ -46,8 +46,9 @@ public class VentanaInicio extends Application{
 	Button btn = new Button("Ir");
 	
 	
-	@Override
-	public void start(Stage initialStage){
+
+	VentanaInicio(){
+		new Reader();
 		//Paneles
 		BorderPane root = new BorderPane();
 		GridPane p0 = new GridPane();
@@ -115,26 +116,10 @@ public class VentanaInicio extends Application{
 		//GridPane p5
 		p5.setStyle("-fx-border-color: black;");
 		p5.setPadding(new Insets(10,10,10,10));
-		lblJP.setText("JUAN PABLO...\n"
-					+ "Estudiante de ingeniria de sistemas e informatica\n"
-					+ "en la Universidad Nacional de Colombia.\n"
-					+ "EDAD: ... .\n"
-					+ "SEMESTRE: ... .");
-		lblDF.setText("WILFER MAURICIO CHAVARRIA JARAMILLO\n"
-					+ "Estudiante de ingeniria de sistemas e informatica\n"
-					+ "en la Universidad Nacional de Colombia.\n"
-					+ "EDAD: 24 años.\n"
-					+ "SEMESTRE: Octavo.");
-		lblWM.setText("DANIEL FERNANDO...\n"
-					+ "Estudiante de ingeniria de sistemas e informatica\n"
-					+ "en la Universidad Nacional de Colombia.\n"
-					+ "EDAD: ... .\n"
-					+ "SEMESTRE: ... .");
-		lblF.setText("FAIBER...\n"
-					+ "Estudiante de ingeniria de sistemas e informatica\n"
-					+ "en la Universidad Nacional de Colombia.\n"
-					+ "EDAD: ... .\n"
-					+ "SEMESTRE: ... .");
+		lblJP.setText("HOJA DE VIDA Juan Pablo");
+		lblDF.setText("HOJA DE VIDA Wilfer Mauricio");
+		lblWM.setText("HOJA DE VIDA Daniel Fernando");
+		lblF.setText("HOJA DE VIDA Faiber");
 		p5.add(lblJP, 0, 0);
 		p5.add(lblDF, 0, 0);
 		p5.add(lblWM, 0, 0);
@@ -173,6 +158,13 @@ public class VentanaInicio extends Application{
 		       }
 		});
 		
+		btn.setOnMouseClicked(new EventHandler<MouseEvent>() {
+		       @Override
+		       public void handle(MouseEvent event) {
+		    	   new VentanaPrincipal();
+		    	   VentanaInicio.this.close();
+		       }
+		});
 		
 		//GridPane p6
 		p6.setStyle("-fx-border-color: black;");
@@ -182,14 +174,9 @@ public class VentanaInicio extends Application{
 		
 		//Creando el scene
 		Scene scene = new Scene(root, 480,300);
-		initialStage.setTitle("Tu pedido");
-		initialStage.setScene(scene);
-		initialStage.show();
-	}
-	
-	public static void main(String args[]) {
-		new Reader();
-		launch(args);
+		this.setTitle("Tu pedido");
+		this.setScene(scene);
+		this.show();
 	}
 	
 	//Un solo manejador de eventos
@@ -202,19 +189,7 @@ public class VentanaInicio extends Application{
 					Platform.exit();
 				}
 				else if(control.equals(descr)){
-					lbl.setText("DESCRIPCION.\n"
-							+ 	"Con nosotros podras realizar todas las compras\n"
-							+	"necesarias para tu hogar, es un tienda 100%\n"
-							+ 	"virtal.\n"
-							+ 	"Si le das click al boton inferiri 'Ir' podras\n"
-							+ 	"encontrar todos nustros productos.\n"
-							+ 	"Es una pagina muy intuitiva y facil de manejar.\n");
-				}
-			}
-			else if(control instanceof Button){
-				if(control.equals(btn)){
-					Platform.exit();
-					Application.launch(new String[] {});
+					lbl.setText("Descripci�n");
 				}
 			}
 			

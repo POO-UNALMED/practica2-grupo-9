@@ -4,6 +4,7 @@ import java.util.List;
 
 import GUI.Compras.UnicoHandlerClass;
 import gestorAplicacion.finanzas.Cliente;
+import gestorAplicacion.finanzas.Factura;
 import gestorAplicacion.productos.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -68,6 +69,7 @@ public class MostrarListas extends Pane {
 					a.setHeaderText(null);
 					a.setContentText(pago());
 					a.show();
+					System.out.println(Factura.facturas);
 				}
 			}
 			
