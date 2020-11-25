@@ -25,6 +25,9 @@ public class Compras extends FieldPanel {
 			boolean[] habilitado, List<Producto> productos, List<Integer> cantidades) {
 		super(tituloCriterios, criterios, tituloValores, valores, habilitado);
 		
+		this.productos.addAll(productos);
+		this.cantidades.addAll(cantidades);
+		
 		
 		btn1.setLayoutX(50);
 		btn2.setLayoutX(150);
@@ -40,6 +43,8 @@ public class Compras extends FieldPanel {
 	
 	public void agregar(List<Producto> productos, List<Integer> cantidades, List<TextField> elem) {
 		MenuTienda.validarProducto(Integer.parseInt(elem.get(0).getText()), Integer.parseInt(elem.get(1).getText()), productos, cantidades);
+		System.out.println(productos);
+		System.out.println(cantidades);
 	}
 
 
