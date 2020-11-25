@@ -16,10 +16,17 @@ public class Compras extends FieldPanel {
 	
 	Button btn1 = new Button("Añadir");
 	Button btn2 = new Button("Eliminar");
-	List<Producto> productos = new ArrayList<Producto>();
-	List<Integer> cantidades = new ArrayList<Integer>();
+	public static List<Producto> productos = new ArrayList<Producto>();
+	public static List<Integer> cantidades = new ArrayList<Integer>();
 	List<TextField> elements = super.elementos;
 	UnicoHandlerClass eventos = new UnicoHandlerClass();
+	
+	public static List<Producto> getProductos(){
+		return productos;
+	}
+	public static List<Integer> getCantidades(){
+		return cantidades;
+	}
 	
 	public Compras(String tituloCriterios, String[] criterios, String tituloValores, String[] valores,
 			boolean[] habilitado, List<Producto> productos, List<Integer> cantidades) {

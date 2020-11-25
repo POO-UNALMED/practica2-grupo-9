@@ -1,5 +1,6 @@
 package GUI;
 
+import BaseDatos.Reader;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -165,7 +166,7 @@ public class VentanaInicio2 extends Application{
 	}
 	
 	public static void main(String args[]) {
-		//new Reader();
+		new Reader();
 		launch(args);
 	}
 	
